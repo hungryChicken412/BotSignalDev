@@ -22,6 +22,7 @@ const blogPosts: BlogPost[] = [
 		title: "The End of Ten Blue Links: How to Optimize Your Startup for AI Search",
 		description: "LLMs have fundamentally changed how people find information online. Here is how founders can ensure their websites are read, understood, and cited by AI.",
 		category: "AI Strategy",
+		href: "/blogs/endOfEra",
 		date: "Jul 22, 2026",
 		keywords: ["seo", "llm", "semantic", "entity", "future", "search"],
 	},
