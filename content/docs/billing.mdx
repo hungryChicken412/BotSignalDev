@@ -1,0 +1,64 @@
+---
+title: Understanding Credits & Billing
+description: Learn how website audit credits work, how top-up purchases are processed, and how automated failure refunds protect your account.
+---
+
+# Understanding Credits & Billing
+
+RoastMySite.AI operates on a transparent, pay-before-use credit system. Instead of forcing recurring monthly subscriptions or locking you into rigid contracts, you simply top up credits as you need them and spend them at your own pace.
+
+---
+
+## How Credits Work
+
+The credit model is straightforward: **1 scanned URL costs 1 credit**.
+
+*   **Sign-Up Bonus:** Every new user account is automatically credited with 3 free scan credits upon registration.
+*   **No Expiration:** Purchased credits do not expire at the end of the billing cycle. Unused credits remain in your balance until you spend them.
+*   **Granular Deductions:** A credit is only deducted when an audit job is successfully queued and initiated.
+
+---
+
+## Purchasing Credits (Pay-Before-Use)
+
+Our credit model uses a top-up mechanism via Stripe. You pre-purchase the exact volume of audit credits your project or agency requires before triggering scans.
+
+### How to Buy Credits
+1. Navigate to your **Account Dashboard**.
+2. Click the **Credit Counter** badge in the top navigation bar or open **Settings > Billing**.
+3. Select your desired credit pack (or click **Buy Bundle**).
+4. Complete the secure checkout via Stripe.
+
+Once payment is confirmed, a webhook automatically provisions the purchased credits to your account balance in real time, allowing you to run audits immediately.
+
+---
+
+## Batch Auditing & Usage
+
+When running single or multi-page audits, credits are deducted per unique target URL:
+
+*   **Single-Page Audit:** Auditing `https://example.com` consumes **1 credit**.
+*   **Multi-Page Batch Audit:** Submitting a batch of 5 URLs (e.g., `/`, `/pricing`, `/about`, `/docs`, `/blog`) consumes **5 credits**.
+
+<Callout type="info">
+  **API Usage:** Programmatic requests made through the [REST API](/docs/api) consume credits from your balance in the exact same manner as dashboard scans.
+</Callout>
+
+---
+
+## Automated Refund Guarantee
+
+We recognize that target web servers occasionally go down, experience DNS failures, or enforce aggressive Web Application Firewall (WAF) blocks that prevent our headless scanners from completing an audit.
+
+To ensure you never pay for a failed scan, our backend queue incorporates an automated fail-safe refund system:
+
+1. If an audit fails on its initial run, our worker threads automatically retry the scan up to **3 times** with exponential backoff delays.
+2. If all retry attempts fail, the audit status is marked as `Failed`.
+3. The system automatically credits **1 credit back to your account** balance instantly and dispatches an email notification summarizing the issue.
+
+```json
+{
+  "status": "Failed",
+  "error_message": "Target server blocked crawler requests after 3 attempts.",
+  "refund_status": "1 Credit Refunded"
+}

@@ -1,0 +1,65 @@
+---
+title: Overview Dashboard
+description: Understand your top-level AI Readiness Score, core sub-metrics, and prioritized action plan.
+---
+
+# Overview Dashboard
+
+The Overview dashboard serves as the executive summary of your website's AI compatibility. It synthesizes thousands of data points from our headless crawling, semantic parsing, and search index verifications into an easily digestible report.
+
+This page breaks down how to interpret the core sections of your overview report and how the underlying scoring system works.
+
+---
+
+## The AI Readiness Score
+
+At the center of your dashboard is the **AI Readiness Score**, a weighted metric (out of 100) that determines how easily Large Language Models (LLMs) can discover, ingest, and cite your content, 3.
+
+Your score falls into one of three primary tiers:
+
+*   **80 - 100 (Highly Discoverable):** Search engines and AI agents can seamlessly find and extract answers from your site.
+*   **50 - 79 (Moderately Discoverable):** Your site is technically accessible, but lacks search authority or RAG-friendly content density.
+*   **0 - 49 (Poor Discoverability):** AI bots and modern search agents are actively struggling to find or understand your website.
+
+---
+
+## Core Dimensions
+
+The global readiness score is calculated by evaluating your website across five distinct dimensions. The Dimension Analysis chart provides a visual breakdown of your performance in each category:
+
+*   **AI Discovery:** Evaluates if AI crawlers have unrestricted access to your domain and if foundational schema markup is present.
+*   **Indexing Authority:** Verifies if your site is actively indexed by major search engines, which is a prerequisite for most real-time AI search agents.
+*   **Information Density:** Measures how effectively your content is structured for Retrieval-Augmented Generation (RAG) chunking.
+*   **AI Understanding:** Simulates LLM comprehension to assess if AI can successfully extract facts to answer user queries.
+*   **Technical SEO:** Checks baseline web health, DOM structure, and metadata configurations.
+
+---
+
+## AI Engine Compatibility
+
+Not all AI agents crawl the web the same way. The compatibility grid provides a granular breakdown of how specific AI engines view your site. 
+
+We currently track accessibility and compatibility for the following agents:
+*   **ChatGPT** (`GPTBot`),
+*   **Claude** (`ClaudeBot`),
+*   **Gemini** (`Google-Extended`),
+*   **Perplexity** (`PerplexityBot`),
+
+Each platform receives a dedicated compatibility score and an access status (e.g., `Allowed`, `Blocked`, or `Warning`). These statuses are determined by evaluating your `robots.txt` directives against the specific user-agent of each engine.
+
+<Callout type="warning">
+  **Invisible Sites:** If your website is not indexed by major search engines, all bot statuses will default to `Blocked` or `Invisible`, regardless of your `robots.txt` configuration, as search-based AI agents will not be able to retrieve your pages.
+</Callout>
+
+---
+
+## Top Improvements Engine
+
+To help you systematically improve your score, the dashboard automatically generates a prioritized action plan. 
+
+Tasks are dynamically weighted based on their impact on your overall score and are categorized by severity:
+
+*   **High Priority (Danger):** Critical blockers, such as missing JSON-LD schema or indexing failures, that severely restrict AI visibility.
+*   **Medium Priority (Warning):** Structural issues, such as suboptimal meta descriptions or oversized media assets, that hinder efficient crawling and parsing.
+
+Each recommendation includes a specific point value (`+X pts`) indicating exactly how much your AI Readiness Score will increase once the issue is resolved.

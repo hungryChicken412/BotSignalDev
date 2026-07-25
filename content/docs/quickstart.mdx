@@ -1,0 +1,75 @@
+---
+title: Quick Start Guide
+description: Run your first AI compatibility audit in under 60 seconds and learn how to optimize your site for AI search engines.
+---
+
+# Quick Start Guide
+
+Welcome to **RoastMySite.AI**! This guide will walk you through running your first audit, interpreting your compatibility scores, and applying high-priority fixes so AI assistants like ChatGPT, Claude, and Perplexity can seamlessly recommend your content.
+
+---
+
+## Step 1: Run Your First Audit
+
+Running an audit is the first step to understanding how machine agents view your website. 
+
+1. Navigate to your **[Profile Dashboard](/profile)**.
+2. Locate the **New Scan** input field at the top of your dashboard.
+3. Enter the fully qualified URL of the page you want to analyze (e.g., `https://yourwebsite.com`).
+4. Click **Audit Site**.
+
+<Callout type="info">
+  **Batch Auditing:** Have a massive website? You can scan multiple URLs at once by clicking "Add Another URL" in the dashboard, or by utilizing our [REST API](/docs/api) to programmatically queue hundreds of pages at once.
+</Callout>
+
+Once submitted, our background workers immediately launch headless browsers, fetch your rendered HTML, extract structured data, and process your content through our semantic evaluation models.
+
+---
+
+## Step 2: Interpret Your Readiness Scores
+
+When your scan completes, your report will appear in your **Recent Scans** table. Click the **View (Eye)** icon to open the full diagnostic dashboard. 
+
+We break down your site's health across four core pillars:
+
+### 1. AI Discoverability
+Measures whether AI bots (e.g., `GPTBot`, `PerplexityBot`, `ClaudeBot`) can actually crawl your site. This checks your `robots.txt` directives, Web Application Firewalls (WAFs), and your `llms.txt` file.
+
+### 2. Information Density
+Evaluates how factual and reusable your text is for **Retrieval-Augmented Generation (RAG)**. Sites with high definition counts, hard statistics, and structured tables score the highest.
+
+### 3. Technical SEO & Schema
+Checks your `<head>` metadata, OpenGraph tags, canonical links, and validates your `JSON-LD` schemas (like `Organization`, `FAQPage`, and `Article`).
+
+### 4. AI Comprehension
+Simulates how an LLM synthesizes your business description based solely on your visible DOM text, highlighting potential blindspots in your messaging.
+
+---
+
+## Step 3: Implement Quick Wins
+
+Don't let a low score overwhelm you. Navigate to the **Top Improvements** section on your overview page. Items here are prioritized by their total point impact:
+
+* 🚨 **Danger (High Impact):** Critical blockers like missing JSON-LD schema or blocked crawler user-agents. Fix these immediately.
+* ⚠️ **Warning (Medium Impact):** Missing alt attributes, suboptimal title tag lengths, or thin visible text.
+
+<Callout type="warning">
+  **Pro Tip:** Always tackle the **Danger** items first. A perfect Information Density score won't matter if your `robots.txt` file is actively blocking ChatGPT from reading your site!
+</Callout>
+
+Apply these recommendations in your website builder or codebase, then re-run the scan to instantly see your updated score.
+
+---
+
+## Step 4: Export & Automate
+
+Once your site is optimized, you can take your reports on the go or integrate them into your workflow:
+
+* **Export PDF:** Click **Export PDF** in your dashboard navigation bar to download a white-labeled diagnostic report suitable for clients, stakeholders, or pitch decks.
+* **Automate:** Ready to scale? Head over to our [Developer API Reference](/docs/api) to learn how to trigger audits automatically from your CI/CD pipeline.
+
+---
+
+## Need Assistance?
+
+If your scan timed out or failed to complete, your server might be blocking our bots. Check out our **Troubleshooting Guide** or contact our technical support team at **support@roastmysite.ai**.

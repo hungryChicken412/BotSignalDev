@@ -1,0 +1,86 @@
+---
+title: AI Discoverability
+description: Learn how AI search engines crawl the web, and how to configure your site to guarantee access for ChatGPT, Claude, and Perplexity.
+---
+
+# AI Discoverability
+
+Before an AI agent can analyze your content, summarize your product, or recommend you to a user, it has to be able to *read* your website. 
+
+The **AI Discoverability** module evaluates the technical gateways that allow—or prevent—Large Language Models (LLMs) from scraping your pages.
+
+---
+
+## 1. Crawler Access (`robots.txt`)
+
+Just like Googlebot, AI companies use automated web scrapers to browse the internet. However, many legacy website builders and overzealous security plugins block these new bots by default. 
+
+Our scanners check your `robots.txt` file specifically for the following user-agents:
+
+* **`GPTBot`** (OpenAI / ChatGPT)
+* **`ClaudeBot`** (Anthropic)
+* **`Google-Extended`** (Gemini)
+* **`PerplexityBot`** (Perplexity AI)
+* **`Applebot`** (Apple Intelligence)
+
+### How to unblock AI Agents
+To ensure maximum discoverability, explicitly allow these crawlers in your root `robots.txt` file (located at `yourdomain.com/robots.txt`):
+
+```text
+# Allow major AI Search Agents
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+```
+
+<Callout type="warning">
+  **Check your Firewalls (WAF):** Even if your `robots.txt` is perfectly configured, services like Cloudflare or AWS Shield might present "Bot Protection" challenges. If our audit flags a `403 Forbidden` error, you may need to whitelist AI user-agents in your firewall settings.
+</Callout>
+
+---
+
+## 2. The `llms.txt` Standard
+
+The internet was built for human eyes, which is why websites are full of complex CSS, sticky navbars, and interactive JavaScript. LLMs don't care about any of that—they just want raw, structured information.
+
+The **`/llms.txt`** file is a rapidly adopting industry standard. It acts as a specialized directory specifically formatted for AI consumption.
+
+### Why you need one
+When an AI bot finds an `llms.txt` file at the root of your domain, it skips the expensive process of parsing your visual HTML and instead ingests the clean, markdown-formatted data you provide.
+
+<Callout type="info">
+  **What goes in an llms.txt file?** Typically, you should include a brief system prompt explaining what your company does, followed by links to clean markdown versions of your most important documentation or product pages.
+</Callout>
+
+---
+
+## 3. JavaScript Rendering (CSR vs. SSR)
+
+Modern websites built with React, Vue, or Angular often rely on **Client-Side Rendering (CSR)**. This means the server sends an empty HTML file, and the user's browser executes JavaScript to load the actual text.
+
+**The AI Problem:** 
+Most AI crawlers (especially lightweight ones doing real-time RAG) *do not execute JavaScript*. If they visit a CSR website, they see a blank page.
+
+### The Fix
+Our audit simulates a non-JavaScript crawl to see exactly what an LLM sees. If your score drops here, you need to implement:
+1. **Server-Side Rendering (SSR):** Tools like Next.js or Nuxt.js pre-render the HTML on the server.
+2. **Static Site Generation (SSG):** Your pages are compiled into static HTML files at build time.
+3. **Dynamic Rendering:** Your server detects an AI user-agent and serves a pre-rendered static snapshot instead of the heavy JavaScript bundle.
+
+---
+
+## 4. XML Sitemaps
+
+A well-structured sitemap (`sitemap.xml`) is just as critical for AI as it is for Google. 
+
+When OpenAI crawls the web to update its underlying model weights, it uses sitemaps to prioritize which URLs to fetch and to understand the hierarchical relationship between your product pages and your blog posts. 
+
+Ensure your sitemap is:
+* Submitted directly in your `robots.txt`.
+* Automatically updated when new pages are published.
+* Excludes utility pages (like `/login`, `/cart`, or `/tags`).

@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* 1. Define your dynamic variables for Light/Dark mode */
+@layer base {
+	:root {
+		--bg-base: #ffffff;
+		--surface-base: #ffffff;
+		--orange-base: #750af8;
+		--orange-light: #ff9a9e;
+		--primary-base: var(--orange-base);
+		--primary-light: var(--orange-light);
+		--on-primary-base: #ffffff;
+		--error-base: #ba1a1a;
+		/* ... add the rest of your light hex codes here */
+	}
+
+	.dark {
+		--bg-base: #000000;
+		--surface-base: #121212;
+		--orange-base: #ffb59e;
+		--orange-light: #ffd3c1;
+		--primary-base: var(--orange-base);
+		--primary-light: var(--orange-light);
+		/* ... add the rest of your dark hex codes here */
+	}
+}
+
+/* 2. Map everything to Tailwind utilities */
+@theme {
+	/* --- Colors (Generates bg-*, text-*, border-*, etc.) --- */
+	--color-background: var(--bg-base);
+	--color-surface: var(--surface-base);
+	--color-orange: var(--orange-base);
+	--color-orange-light: var(--orange-light);
+	--color-primary: var(--primary-base);
+	--color-primary-light: var(--primary-light);
+	--color-on-primary: var(--on-primary-base);
+	--color-error: var(--error-base);
+
+	/* --- Border Radius (Generates rounded-default, rounded-lg, etc.) --- */
+	--radius-default: 1rem;
+	--radius-lg: 2rem;
+	--radius-xl: 3rem;
+	--radius-full: 9999px;
+
+	/* --- Spacing (Generates p-unit, m-gutter, gap-section-gap, etc.) --- */
+	--spacing-unit: 8px;
+	--spacing-gutter: 32px;
+	--spacing-container-padding: 64px;
+	--spacing-section-gap: 120px;
+	--spacing-card-internal: 40px;
+
+	/* --- Fonts (Generates font-jakarta, etc.) --- */
+	--font-jakarta: "Plus Jakarta Sans", sans-serif;
+
+	/* --- Typography (Generates text-headline-lg, text-body-md, etc.) --- */
+	/* v4 handles complex text sizes by attaching sub-properties to the base variable */
+
+	--text-label-caps: 12px;
+	--text-label-caps--line-height: 1;
+	--text-label-caps--letter-spacing: 0.1em;
+	--text-label-caps--font-weight: 700;
+
+	--text-headline-lg: 40px;
+	--text-headline-lg--line-height: 1.2;
+	--text-headline-lg--letter-spacing: -0.02em;
+	--text-headline-lg--font-weight: 700;
+
+	--text-body-lg: 18px;
+	--text-body-lg--line-height: 1.6;
+	--text-body-lg--font-weight: 400;
+
+	--text-display-xl: 64px;
+	--text-display-xl--line-height: 1.1;
+	--text-display-xl--letter-spacing: -0.04em;
+	--text-display-xl--font-weight: 800;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.material-symbols-outlined {
+	font-family: "Material Symbols Outlined";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-feature-settings: "liga";
+	-webkit-font-smoothing: antialiased;
+}
+
+@keyframes gradient-shift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes float-slow {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+	50% {
+		transform: translate3d(10px, -14px, 0) scale(1.04);
+	}
+}
+
+.animate-gradient {
+	background-size: 200% 200%;
+	animation: gradient-shift 15s ease infinite;
+}
+
+.animate-float-slow {
+	animation: float-slow 10s ease-in-out infinite;
+}
+
+.animate-float-slow-delayed {
+	animation: float-slow 12s ease-in-out infinite reverse;
+}
+
+#custom-cursor {
+	width: 16px;
+	height: 16px;
+	background-color: white;
+	border-radius: 50%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	z-index: 9999;
+	mix-blend-mode: difference;
+	transition: transform 0.1s ease-out;
+	transform: translate(-50%, -50%);
+	display: none;
+}
+@media (pointer: coarse) {
+	#custom-cursor {
+		display: none !important;
+	}
+}

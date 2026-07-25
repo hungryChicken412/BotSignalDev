@@ -1,0 +1,74 @@
+---
+title: Technical SEO & Architecture
+description: Analyze your DOM structure, metadata, and schema markup to ensure AI crawlers can efficiently parse and index your pages.
+---
+
+# Technical SEO & Architecture
+
+While traditional SEO focuses on ranking in human-facing search engine results, **Technical SEO** for artificial intelligence is strictly about crawl efficiency and structural clarity.
+
+The SEO dashboard provides a granular breakdown of your website's DOM elements, metadata, and media assets. If AI agents exhaust their crawl budgets downloading oversized assets or get trapped in redirect chains, they will abandon your page before extracting your core value proposition.
+
+---
+
+## Overview Metrics
+
+At the top of the SEO dashboard, a high-level grid provides immediate visibility into your foundational health across four key areas:
+
+- **Title Quality:** Evaluates the length and clarity of your `<title>` tag.
+- **Meta Description:** Scores the presence and length of your page summary.
+- **Image Optimization:** Measures media health based on file sizes and accessibility attributes.
+- **Schema Markup:** Indicates the presence and validity of structured JSON-LD data.
+
+---
+
+## Metadata Analysis
+
+Metadata acts as the initial handshake between your website and an AI crawler. Our system strictly evaluates your `<head>` tags against optimal thresholds to prevent context truncation.
+
+### Title & Meta Descriptions
+
+AI agents use these tags to quickly determine if a page contains the answer to a user's prompt. We check if your tags fall within optimal character limits:
+
+- **Title Tags:** Evaluated for an optimal length of 30 to 70 characters.
+- **Meta Descriptions:** Evaluated for an optimal length of 80 to 160 characters.
+
+### Canonical Configurations
+
+Duplicate content confuses machine learning models. The scanner verifies the presence of a self-referencing canonical URL (`rel="canonical"`) to ensure AI agents map your factual data to the correct primary endpoint.
+
+<Callout type="warning">**Thin Content Penalties:** Metadata is irrelevant if the page body is empty. Our scanner will flag a "Thin Content" deduction if your page contains fewer visible words, as AI models require sufficient context to synthesize an answer.</Callout>
+
+---
+
+## Site Architecture
+
+Complex, nested, or broken routing severely degrades an AI's ability to map your domain's knowledge graph. The Site Architecture module evaluates internal routing health.
+
+- **Broken Links (404):** Identifies internal links leading to dead endpoints, which instantly halt crawler progression.
+- **Redirect Chains:** Flags links that bounce through multiple URLs before resolving.
+- **Internal Link Density:** Analyzes the ratio of internal links to visible text to ensure a healthy, crawlable structure without overwhelming the parser.
+- **Heading Structure:** The scanner verifies the presence of a single, definitive `<h1>` tag and supporting `<h2>` tags to ensure semantic hierarchy.
+
+---
+
+## Structured Data (Schema)
+
+Structured data is arguably the most critical technical component for AI discoverability. By providing explicit `application/ld+json` schema markup, you bypass the AI's need to "guess" your content's meaning 3].
+
+Our engine analyzes your DOM for:
+
+- **Syntax Validation:** Detects malformed JSON-LD that would cause a parser to fail.
+- **Detected Types:** Lists all valid schema objects currently deployed on your page.
+- **Missing Critical Schemas:** Cross-references your deployed tags against highly recommended AI schemas, such as `Organization`, `FAQPage`, `Article`, `Product`, and `WebSite`.
+
+---
+
+## Media Health
+
+Heavy media assets drain compute resources. AI crawlers operate on strict timeouts and will drop connections if a page takes too long to load.
+
+- **Oversized Images:** The scanner flags any image exceeding 500kb and calculates the total potential bandwidth savings in megabytes (MB).
+- **Missing Alt Text:** Images are invisible to standard text-based LLM scrapers. We calculate the exact percentage of images missing `alt` attributes, as these are required to translate visual data into machine-readable context.
+
+> **Optimization Strategy:** Always serve modern, compressed image formats (like WebP or AVIF) and utilize lazy-loading to ensure the text-based DOM resolves for the AI crawler instantly.

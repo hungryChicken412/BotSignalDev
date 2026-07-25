@@ -1,0 +1,156 @@
+---
+title: REST API Reference
+description: Programmatically trigger site audits, retrieve structured AI readiness metrics, and manage audit reports using the RoastMySite REST API.
+---
+
+# REST API Reference
+
+The RoastMySite API is organized around **REST**. Our API has predictable resource-oriented URLs, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+
+<Callout type="info">
+  **Looking for SDKs?** Currently, we support direct HTTP requests. Official Node.js and Python SDKs are actively in development. Reach out to support for early access.
+</Callout>
+
+---
+
+## Base URL
+
+All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail unless explicitly noted.
+
+```http
+[https://api.roastmysite.ai/api](https://api.roastmysite.ai/api)
+```
+
+---
+
+## Authentication
+
+Authenticate your account when using the API by including your secret API key in the request. You can manage your API keys in your **Account Settings**. Your API keys carry many privileges, so be sure to keep them secure!
+
+All API requests must include the `Authorization` header formatted with your Token:
+
+```http
+Authorization: Token YOUR_SECRET_API_KEY
+```
+
+<Callout type="warning">
+  **Guest Requests:** The `/audits/reports/start/` endpoint supports unauthenticated requests. If the `Authorization` header is omitted, the report is generated as an anonymous scan and will **not** be saved to your dashboard history.
+</Callout>
+
+---
+
+## Core Endpoints
+
+### 1. Create a New Audit
+
+Trigger a new asynchronous background job to scrape, parse, and evaluate a target website.
+
+**`POST`** `/audits/reports/start/`
+
+**Headers**
+```http
+Content-Type: application/json
+Authorization: Token YOUR_SECRET_API_KEY
+```
+
+**Parameters**
+* **`url`** &nbsp; <span style={{ color: '#ef4444', fontSize: '0.8em', fontWeight: 'bold' }}>REQUIRED</span>
+  *The fully qualified URL of the website to be audited (e.g., `https://example.com`).*
+* **`email`** &nbsp; <span style={{ color: '#64748b', fontSize: '0.8em', fontWeight: 'bold' }}>OPTIONAL</span>
+  *An email address to notify upon audit completion.*
+
+**Response `201 Created`**
+```json
+{
+  "id": 142,
+  "message": "Audit accepted and processing in background.",
+  "status": "Pending"
+}
+```
+
+---
+
+### 2. Retrieve Audit Results
+
+Fetch the execution status and full diagnostic payload for a specific audit report. 
+
+**`GET`** `/audits/reports/{id}/`
+
+**Response `200 OK` (Processing)**
+If the worker thread is still active, the payload will omit the `results` object to keep the payload lightweight during polling.
+```json
+{
+  "id": 142,
+  "url": "[https://example.com](https://example.com)",
+  "status": "Processing",
+  "results": null,
+  "created_at": "2026-07-21T18:30:00.000Z"
+}
+```
+
+**Response `200 OK` (Completed)**
+Once finished, the `results` dictionary provides granular sub-metrics alongside the top-level dashboard overview.
+```json
+{
+  "id": 142,
+  "url": "[https://example.com](https://example.com)",
+  "status": "Completed",
+  "created_at": "2026-07-21T18:30:00.000Z",
+  "results": {
+    "overview": {
+      "header": {
+        "title": "Highly Discoverable by AI",
+        "summary": "Search engines and AI agents can easily extract answers."
+      },
+      "main_scores": {
+        "ai_discoverability": { "score": 88, "status": "excellent" }
+      }
+    },
+    "details": {
+      "citation_score": 82,
+      "discovery": { "overall_score": 88 }
+    }
+  }
+}
+```
+
+---
+
+### 3. List Account Audits
+
+Returns a paginated list of all historical audit reports created by your account, ordered by most recent first.
+
+**`GET`** `/audits/reports/list/`
+
+**Response `200 OK`**
+```json
+{
+  "count": 12,
+  "next": "[https://api.roastmysite.ai/api/audits/reports/list/?page=2](https://api.roastmysite.ai/api/audits/reports/list/?page=2)",
+  "previous": null,
+  "results": [
+    {
+      "id": 142,
+      "url": "[https://example.com](https://example.com)",
+      "status": "Completed",
+      "score": 88,
+      "created_at": "2026-07-21T18:30:00.000Z"
+    }
+  ]
+}
+```
+
+---
+
+## Error Codes
+
+RoastMySite uses conventional HTTP response codes to indicate the success or failure of an API request. Codes in the `2xx` range indicate success. Codes in the `4xx` range indicate an error that failed given the information provided.
+
+| Code | Status | Description |
+| :--- | :--- | :--- |
+| **`200`** | `OK` | Everything worked as expected. |
+| **`201`** | `Created` | The audit task was queued successfully. |
+| **`400`** | `Bad Request` | The request was unacceptable (e.g., malformed URL or disposable email). |
+| **`401`** | `Unauthorized` | No valid API key provided or token is expired. |
+| **`404`** | `Not Found` | The requested resource doesn't exist or belongs to another user. |
+| **`429`** | `Too Many Requests` | You have hit your rate limit. Wait before polling again. |

@@ -1,0 +1,62 @@
+---
+title: Information Density & RAG Optimization
+description: Learn how to structure your website copy so Large Language Models can easily chunk, extract, and cite your facts.
+---
+
+# Information Density & RAG Optimization
+
+When users ask an AI assistant like ChatGPT or Claude a question, the AI rarely relies solely on its internal training memory. Instead, it uses **RAG (Retrieval-Augmented Generation)** to scan the live web, extract relevant web pages, split them into fragments ("chunks"), and synthesize a direct answer.
+
+**Information Density** measures how efficiently your page delivers hard facts, statistics, and definitions compared to narrative fluff. 
+
+If your page is 90% marketing storytelling and 10% actual data, the AI's chunking algorithm will struggle to isolate your core value proposition, resulting in lower visibility and skipped citations.
+
+---
+
+## Why LLMs Struggle with Marketing Copy
+
+Human readers love emotional hooks, metaphors, and narrative brand stories. AI agents, however, are relational extraction engines. 
+
+When an LLM evaluates a standard marketing paragraph:
+> *"At Acumen Cloud, we believe that empowering modern development teams shouldn't feel like navigating a labyrinth. That's why we built our next-generation platform to redefine how infrastructure scales..."*
+
+The model extracts close to **zero concrete entities or actionable facts**. It cannot determine pricing, technical specs, or specific capabilities from that prose.
+
+---
+
+## Core Signals We Measure
+
+Our information density scanner evaluates your DOM for five high-yield structural signals that LLMs prioritize:
+
+### 1. Definitional Statements
+AI models heavily weight sentences structured as absolute definitions (e.g., *"X refers to..."* or *"Y is defined as..."*). These act as definitive answers to user search queries.
+
+### 2. Hard Statistics & Metrics
+Unique data points—such as percentages, multipliers (e.g., *3x faster*), and absolute counts—signal authoritative expertise that models prefer to cite.
+
+### 3. Structured Lists (`<li>`)
+Content wrapped in semantic unordered or ordered lists is significantly easier for RAG pipelines to chunk step-by-step compared to multi-sentence paragraphs.
+
+### 4. Relational Tables (`<table>`)
+Tables provide rigid structural boundaries. When an LLM parses a feature or pricing comparison table, it maps relationships instantly without guessing context.
+
+### 5. Sentence Length Control
+The optimal sentence length for AI parser chunking is **under 25–40 words**. Long, compounding run-on sentences confuse parsers and lead to context loss.
+
+<Callout type="info">
+  **The TL;DR Rule:** AI models love summaries. Placing a bolded, fact-dense "TL;DR" block at the top of your blog posts or documentation articles increases your extraction score by up to 35%.
+</Callout>
+
+---
+
+## How to Optimize Your Content
+
+If your RoastMySite audit flags a low Information Density score, follow these steps to refactor your copy:
+
+1. **Front-Load the Facts:** Move your core statistics and definitive statements to the top third of the page. Do not bury the lede beneath three paragraphs of introduction.
+2. **Break Down Narratives:** Take long block paragraphs explaining a feature and convert them into bulleted feature lists.
+3. **Use Explicit Headings:** Ensure your subheadings (`<h2>`, `<h3>`) directly answer user intent queries (e.g., use *"How to Reset an API Key"* instead of *"Managing Your Security Credentials"*).
+
+<Callout type="warning">
+  **Avoid Keyword Stuffing:** Increasing density does not mean repeating keywords. It means increasing the **ratio of unique facts to total word count**. Every sentence should introduce a new entity, metric, or definition.
+</Callout>  
