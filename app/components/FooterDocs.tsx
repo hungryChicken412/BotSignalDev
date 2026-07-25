@@ -18,7 +18,7 @@ export default function Footer() {
 						<div className="bg-gray-900 text-white p-1.5 rounded-lg group-hover:rotate-12 transition-transform duration-300">
 							<Sparkles className="w-4 h-4" />
 						</div>
-						RoastMySite.AI
+						BotSignal.dev
 					</Link>
 
 					<p className="text-sm text-gray-500 leading-relaxed">Analyze your website for AI discoverability, technical SEO, and structured data in under 60 seconds.</p>
@@ -55,7 +55,7 @@ export default function Footer() {
 						<Link href="/docs" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
 							Documentation
 						</Link>
-						<a href="mailto:support@roastmysite.ai" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
+						<a href="mailto:support@BotSignal.dev" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
 							Contact Us
 						</a>
 					</div>
@@ -64,7 +64,7 @@ export default function Footer() {
 
 			{/* Bottom Row: Copyright & Socials */}
 			<div className="max-w-7xl mx-auto pt-8 border-t border-gray-200/60 flex flex-col md:flex-row items-center justify-between gap-4">
-				<div className="text-sm font-medium text-gray-400">&copy; {currentYear} RoastMySite AI. All rights reserved.</div>
+				<div className="text-sm font-medium text-gray-400">&copy; {currentYear} BotSignal.dev. All rights reserved.</div>
 
 				{/* Social Icons */}
 				{/* Social Icons */}

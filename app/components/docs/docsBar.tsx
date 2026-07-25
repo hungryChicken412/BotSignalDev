@@ -71,7 +71,7 @@ export default function DocsSidebar() {
 			<div onClick={() => setIsOpen(false)} className={`fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-[60] md:hidden transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`} />
 
 			{/* Sidebar Container (Slide-in on Mobile, Fixed on Desktop) */}
-			<aside className={`fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200 flex flex-col z-[70] transform transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+			<aside className={`fixed md:absolute inset-y-0 left-0 w-64 bg-white border-r border-gray-200 flex flex-col z-[70] transform transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
 				{/* Header */}
 				<div className="flex-none py-8 px-6 flex items-start justify-between">
 					<div>
@@ -80,7 +80,7 @@ export default function DocsSidebar() {
 								<Sparkles className="w-4 h-4" />
 							</div>
 							<Link className="font-bold text-xl tracking-tight text-gray-900" href="/">
-								RoastMySite
+								BotSignal.dev
 							</Link>
 						</div>
 						<p className="text-xs font-semibold uppercase tracking-widest text-indigo-600 ml-11">Documentation</p>

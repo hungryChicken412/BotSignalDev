@@ -282,7 +282,7 @@ export default function DocumentationPage() {
 						<LifeBuoy className="w-8 h-8 text-indigo-300 mb-3 sm:mb-4" />
 						<h3 className="text-base sm:text-lg font-semibold mb-2">Still need help?</h3>
 						<p className="text-xs sm:text-sm text-gray-300 mb-5 sm:mb-6 leading-relaxed">Our support team is available 24/7 to help you resolve auditing issues.</p>
-						<a href="mailto:support@roastmysite.ai" className="block text-center w-full py-2.5 px-4 bg-white text-gray-900 font-semibold text-sm rounded-xl hover:bg-gray-50 transition-colors shadow-sm">
+						<a href="mailto:support@BotSignal.dev" className="block text-center w-full py-2.5 px-4 bg-white text-gray-900 font-semibold text-sm rounded-xl hover:bg-gray-50 transition-colors shadow-sm">
 							Contact Support
 						</a>
 					</div>

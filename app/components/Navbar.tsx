@@ -82,7 +82,7 @@ export default function Navbar() {
 					<div className="bg-primary text-on-primary p-1.5 rounded-full group-hover:rotate-12 transition-transform duration-300">
 						<Sparkles className="w-5 h-5" />
 					</div>
-					RoastMySite.AI
+					BotSignal.dev
 				</Link>
 
 				{/* Desktop Navigation */}
