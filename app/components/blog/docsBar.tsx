@@ -80,7 +80,7 @@ export default function DocsSidebar() {
 								<Sparkles className="w-4 h-4" />
 							</div>
 							<Link className="font-bold text-xl tracking-tight text-gray-900" href="/">
-								RoastMySite
+								BotSignal.Dev
 							</Link>
 						</div>
 						<p className="text-xs font-semibold uppercase tracking-widest text-indigo-600 ml-11">Documentation</p>
