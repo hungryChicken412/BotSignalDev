@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
 	title: "BotSignal.Dev | Will ChatGPT recommend your website?",
-	description: "Scan your website for AI discoverability and if LLM bots can find and understand your website , LLM compatibility, and SEO issues in under 60 seconds.",
+	description: "Scan your website for AI discoverability and if LLM bots can find and understand your website. LLM compatibility, and SEO issues in under 60 seconds.",
 };
 
 export default function RootLayout({
