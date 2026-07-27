@@ -26,8 +26,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "RoastMySite.AI | AI Compatibility Audits",
-	description: "Scan your website for AI discoverability, LLM compatibility, and SEO issues in under 60 seconds.",
+	title: "BotSignal.Dev | Will ChatGPT recommend your website?",
+	description: "Scan your website for AI discoverability and if LLM bots can find and understand your website , LLM compatibility, and SEO issues in under 60 seconds.",
 };
 
 export default function RootLayout({
