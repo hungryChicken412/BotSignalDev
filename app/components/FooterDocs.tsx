@@ -3,23 +3,19 @@ import Link from "next/link";
 import {Sparkles} from "lucide-react";
 // Import the brand icons from react-icons/si (Simple Icons)
 import {SiGithub, SiX, SiLinkerd} from "react-icons/si";
+import LogoBrand from "./logo";
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className=" border-t border-gray-200/60 bg-white/50  pt-16 pb-8 px-4 md:px-8 overflow-hidden">
+		<footer className=" border-t border-gray-200/60 bg-white/50  pt-16 pb-8 px-4 md:px-8 overflow-hidden " >
 			{/* Subtle background glow */}
 
 			<div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12 md:gap-8 mb-16">
 				{/* Left Side: Brand, Tagline & Status */}
 				<div className="flex flex-col gap-5 max-w-sm">
-					<Link className="font-bold text-xl tracking-tight text-gray-900 flex items-center gap-2 w-fit group" href="/">
-						<div className="bg-gray-900 text-white p-1.5 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-							<Sparkles className="w-4 h-4" />
-						</div>
-						BotSignal.dev
-					</Link>
+					<LogoBrand />
 
 					<p className="text-sm text-gray-500 leading-relaxed">Analyze your website for AI discoverability, technical SEO, and structured data in under 60 seconds.</p>
 
@@ -55,7 +51,7 @@ export default function Footer() {
 						<Link href="/docs" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
 							Documentation
 						</Link>
-						<a href="mailto:support@BotSignal.dev" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
+						<a href="mailto:hello@BotSignal.dev" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
 							Contact Us
 						</a>
 					</div>

@@ -46,7 +46,7 @@ export default async function DocPage({params}: {params: Promise<{id: string}>})
 	}
 
 	return (
-		<main className="ml-0 md:ml-64 pt-24 pb-24 md:pb-12 px-4 sm:px-6 md:px-8 w-full md:w-[calc(100%-16rem)] max-w-[100vw] min-h-screen text-gray-900 bg-gray-50/50 overflow-x-hidden flex flex-col">
+		<main className="ml-0  pt-24 pb-24 md:pb-12 px-4 sm:px-6 md:px-8 w-full md:w-[calc(100%-16rem)] max-w-[100vw] min-h-screen text-gray-900 bg-gray-50/50 overflow-x-hidden flex flex-col">
 			{/* Inner Wrapper restricts max width without blowing out viewport */}
 			<div className="w-full max-w-5xl mx-auto min-w-0 flex-1">
 				{/* Breadcrumb Navigation */}

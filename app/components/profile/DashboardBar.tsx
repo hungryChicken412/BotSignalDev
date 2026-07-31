@@ -2,15 +2,20 @@
 import {Suspense, useState} from "react";
 // ADD usePathname HERE
 import {useSearchParams, usePathname} from "next/navigation";
-import {LayoutDashboard, Notebook, Settings, Sparkles, type LucideIcon} from "lucide-react";
+import {CreditCardIcon, DollarSignIcon, FileQuestion, LayoutDashboard, Notebook, Settings, Shield, Sparkles, type LucideIcon} from "lucide-react";
 import Link from "next/link";
 import SettingsModal from "./SettingsModal";
+import LogoBrand from "../logo";
 
 type NavItem = {label: string; href: string; icon: LucideIcon};
 
 const navItems: NavItem[] = [
 	{label: "Account", href: "/profile", icon: LayoutDashboard},
-	{label: "Documentation", href: "/documentation", icon: Notebook},
+
+	{label: "Tutorials", href: "/docs", icon: FileQuestion},
+	{label: "Security", href: "/docs", icon: Shield},
+	{label: "Billing", href: "/docs", icon: CreditCardIcon},
+	{label: "Documentation", href: "/docs", icon: Notebook},
 ];
 
 // 1. Create a component that handles the actual navigation rendering
@@ -28,17 +33,9 @@ function NavigationContent() {
 	return (
 		<>
 			{/* Desktop Sidebar */}
-			<aside className="fixed left-0 top-0 z-50 hidden h-screen w-64 flex-col border-r border-gray-200 bg-white py-8 md:flex">
+			<aside className="sticky left-0 top-0 z-50 hidden h-screen w-64 flex-col border-r border-gray-200 bg-white py-8 md:flex">
 				<div className="mb-8 flex items-center gap-3 px-6">
-					<div className="bg-primary text-on-primary p-1.5 rounded-full group-hover:rotate-12 transition-transform duration-300">
-						<Sparkles className="w-5 h-5" />
-					</div>
-					<div>
-						<Link className="font-display-xl text-xl tracking-tighter text-on-surface flex items-center gap-2 group" href="/">
-							RoastMySite.AI
-						</Link>
-						<p className="text-xs uppercase tracking-wider text-gray-500">Technical Audit Pro</p>
-					</div>
+					  <LogoBrand/>  
 				</div>
 
 				<nav className="flex flex-1 flex-col px-3">

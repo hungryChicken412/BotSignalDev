@@ -17,7 +17,7 @@ export default function AIRecommendationsPage() {
 	// ---------------------------------------------------------
 	if (isLoading) {
 		return (
-			<div className="ml-0 md:ml-64 mt-16 flex h-[80vh] items-center justify-center">
+			<div className="ml-0  mt-16 flex h-[80vh] items-center justify-center">
 				<Loader2 className="h-12 w-12 animate-spin text-indigo-500" />
 			</div>
 		);
@@ -25,7 +25,7 @@ export default function AIRecommendationsPage() {
 
 	if (!auditId || !reportData || !reportData.results) {
 		return (
-			<div className="ml-0 md:ml-64 mt-16 p-8 flex flex-col items-center justify-center text-center">
+			<div className="ml-0  mt-16 p-8 flex flex-col items-center justify-center text-center">
 				<h2 className="text-2xl font-bold text-gray-800">No Audit Selected</h2>
 				<p className="text-gray-500 mt-2">Please select an audit from your history to view its dashboard.</p>
 			</div>
@@ -65,7 +65,7 @@ export default function AIRecommendationsPage() {
 	// RENDER UI
 	// ---------------------------------------------------------
 	return (
-		<main className="md:ml-64 pt-16 md:pt-24 pb-24 md:pb-12 px-4 md:px-8 max-w-7xl">
+		<main className=" pt-16 md:pt-24 pb-24 md:pb-12 px-4 md:px-8 max-w-7xl">
 			<div className="max-w-7xl mx-auto px-4 md:px-8">
 				<ExecutiveSummarySection data={ExecutiveSummary} />
 

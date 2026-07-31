@@ -5,7 +5,7 @@ import Tables from "../components/profile/Tables";
 
 export default function Dashboard() {
 	return (
-		<main className="ml-0 md:ml-64 mt-26 md:mt-16 p-4 md:p-8 min-h-screen bg-gray-50/50">
+		<main className="ml-0  mt-26 md:mt-16 p-4 md:p-8 min-h-screen bg-gray-50/50">
 			<div className="max-w-7xl mx-auto space-y-8">
 				{/* Header & Credits Section */}
 				<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-gray-100">

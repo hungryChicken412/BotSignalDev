@@ -10,7 +10,7 @@ import {ToastContainer} from "react-toastify";
 
 // Configure the text font
 const plusJakartaSans = Plus_Jakarta_Sans({
-	subsets: ["latin"],
+	subsets: ["latin"],	
 	weight: ["400", "500", "600", "700", "800"],
 	variable: "--font-plus-jakarta", // CSS variable name
 });
@@ -28,6 +28,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: "BotSignal.Dev | Will ChatGPT recommend your website?",
 	description: "Scan your website for AI discoverability and if LLM bots can find and understand your website. LLM compatibility, and SEO issues in under 60 seconds.",
+	icons: {
+		icon: "/botsignaldevicon.png", // Maps to public/brand-icon.png
+		apple: "/apple-touch-icon.png",
+	},
 };
 
 export default function RootLayout({

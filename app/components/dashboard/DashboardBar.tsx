@@ -5,6 +5,7 @@ import {useSearchParams, usePathname} from "next/navigation";
 import {Bot, Crown, LayoutDashboard, Quote, Search, ShieldCheck, Sparkles, Menu, X, type LucideIcon} from "lucide-react";
 import Link from "next/link";
 import {baseUrl} from "@/app/user.service";
+import LogoBrand from "../logo";
 
 type NavItem = {label: string; href: string; icon: LucideIcon};
 
@@ -58,20 +59,12 @@ function NavigationContent() {
 			{/* Mobile Backdrop Overlay */}
 			<div onClick={() => setIsOpen(false)} className={`fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-[60] md:hidden transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`} />
 
-			{/* Sidebar Container (Slide-in on Mobile, Fixed on Desktop) */}
-			<aside className={`fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200 flex flex-col z-[70] transform transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+			{/* Sidebar Container (Slide-in on Mobile, Sticky on Desktop) */}
+			<aside className={`fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200 flex flex-col z-[70] transform transition-transform duration-300 ease-in-out md:sticky md:top-0 md:h-screen md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
 				{/* Header */}
 				<div className="flex-none py-8 px-6 flex items-start justify-between">
 					<div className="flex items-center gap-3">
-						<div className="bg-primary text-on-primary p-1.5 rounded-full group-hover:rotate-12 transition-transform duration-300">
-							<Sparkles className="w-5 h-5" />
-						</div>
-						<div>
-							<Link className="font-display-xl text-xl tracking-tighter text-on-surface flex items-center gap-2 group" href="/">
-								RoastMySite.AI
-							</Link>
-							<p className="text-xs uppercase tracking-wider text-gray-500">Technical Audit Pro</p>
-						</div>
+						<LogoBrand />
 					</div>
 
 					{/* Mobile Close Button */}
@@ -136,7 +129,7 @@ function NavigationContent() {
 // 2. Wrap it in Suspense to keep Next.js App Router happy
 export default function Navbar() {
 	return (
-		<Suspense fallback={<div className="w-64 bg-white border-r h-screen hidden md:block"></div>}>
+		<Suspense fallback={<div className="w-64 bg-white border-r h-screen hidden md:block md:sticky md:top-0"></div>}>
 			<NavigationContent />
 		</Suspense>
 	);

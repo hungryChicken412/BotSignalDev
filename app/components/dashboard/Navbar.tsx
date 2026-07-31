@@ -17,6 +17,7 @@ import {
 	type CSSProperties,
 } from "react";
 import Link from "next/link";
+import LogoBrand from "../logo";
 
 interface CustomStyles extends CSSProperties {
 	"--orange-base"?: string;
@@ -128,15 +129,7 @@ export default function Navbar() {
 			</header>
 			<nav className="md:hidden fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-full border border-white/60 bg-white/40 dark:bg-surface-dim/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] z-50 flex justify-between items-center py-3 px-6 transition-all duration-300">
 				{/* Logo & Brand */}
-				<Link
-					className="font-display-xl text-xl tracking-tighter text-on-surface dark:text-primary-fixed-dim flex items-center gap-2 group"
-					href="/"
-				>
-					<div className="bg-primary text-on-primary p-1.5 rounded-full group-hover:rotate-12 transition-transform duration-300">
-						<Sparkles className="w-5 h-5" />
-					</div>
-					RoastMySite.AI
-				</Link>
+				 <LogoBrand/> 
 
 				{/* Desktop Navigation */}
 				<div className="hidden md:flex items-center gap-8">

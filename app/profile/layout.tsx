@@ -9,9 +9,12 @@ export default function DashboardLayout({
 	return (
 		<div className="min-h-full flex flex-col relative z-0">
 			<Navbar />
-			<DashboardBar />
+			<div className="flex flex-col md:flex-row flex-1 w-full">
+				<DashboardBar />
 
-			{children}
+				{/* Main Content Area - takes up remaining width */}
+				<div className="flex-1 min-w-0">{children}</div>
+			</div>
 		</div>
 	);
 }

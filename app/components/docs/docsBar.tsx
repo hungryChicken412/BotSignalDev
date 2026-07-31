@@ -1,9 +1,9 @@
 "use client";
-
 import {useState, useEffect} from "react";
 import {usePathname} from "next/navigation";
 import {BookOpen, Code2, Cpu, LayoutDashboard, Sparkles, Menu, X, type LucideIcon} from "lucide-react";
 import Link from "next/link";
+import LogoBrand from "../logo";
 
 // 1. Nested Data Structure for Documentation
 type DocLink = {label: string; href: string};
@@ -62,7 +62,7 @@ export default function DocsSidebar() {
 
 	return (
 		<>
-			{/* Mobile Hamburger Button (Sits perfectly in the empty left space of DocsNavbar) */}
+			{/* Mobile Hamburger Button */}
 			<button onClick={() => setIsOpen(true)} aria-label="Open documentation menu" className="md:hidden fixed top-3 left-4 z-[60] p-2 rounded-xl bg-white/80 backdrop-blur-md border border-gray-200 shadow-sm text-gray-700 hover:text-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
 				<Menu className="w-5 h-5" />
 			</button>
@@ -70,18 +70,20 @@ export default function DocsSidebar() {
 			{/* Mobile Backdrop Overlay */}
 			<div onClick={() => setIsOpen(false)} className={`fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-[60] md:hidden transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`} />
 
-			{/* Sidebar Container (Slide-in on Mobile, Fixed on Desktop) */}
-			<aside className={`fixed md:absolute inset-y-0 left-0 w-64 bg-white border-r border-gray-200 flex flex-col z-[70] transform transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+			{/* Sidebar Container (Slide-in on Mobile, Sticky on Desktop) */}
+			<aside
+				className={`
+                fixed inset-y-0 left-0 z-[70] w-64 bg-white border-r border-gray-200 flex flex-col 
+                transform transition-transform duration-300 ease-in-out 
+                md:sticky md:top-0 md:h-screen md:translate-x-0
+                ${isOpen ? "translate-x-0" : "-translate-x-full"}
+            `}
+			>
 				{/* Header */}
 				<div className="flex-none py-8 px-6 flex items-start justify-between">
 					<div>
 						<div className="flex items-center gap-3 mb-1">
-							<div className="bg-gray-900 text-white p-1.5 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-								<Sparkles className="w-4 h-4" />
-							</div>
-							<Link className="font-bold text-xl tracking-tight text-gray-900" href="/">
-								BotSignal.dev
-							</Link>
+							<LogoBrand />
 						</div>
 						<p className="text-xs font-semibold uppercase tracking-widest text-indigo-600 ml-11">Documentation</p>
 					</div>
@@ -97,6 +99,7 @@ export default function DocsSidebar() {
 					<div className="space-y-8">
 						{docSections.map((section) => {
 							const SectionIcon = section.icon;
+
 							return (
 								<div key={section.title} className="space-y-3">
 									{/* Section Header */}
@@ -109,6 +112,7 @@ export default function DocsSidebar() {
 									<div className="flex flex-col space-y-0.5 border-l border-gray-200 ml-4 pl-3">
 										{section.links.map((link) => {
 											const isActive = pathname === link.href;
+
 											return (
 												<Link key={link.label} href={link.href} className={`relative py-1.5 px-3 text-sm transition-colors rounded-r-md ${isActive ? "text-indigo-700 font-medium bg-indigo-50/50" : "text-gray-500 hover:text-gray-900 hover:bg-gray-100/50"}`}>
 													{/* Active Indicator Line */}

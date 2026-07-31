@@ -155,12 +155,8 @@ export default function DocumentationPage() {
 	}, []);
 
 	return (
-		<main className="ml-0 md:ml-64 overflow-x-hidden pt-24 md:pt-24 pb-24 md:pb-12 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-gray-900 bg-gray-50/50">
-			<div className="mb-6">
-				<Link href="/profile" className="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center gap-1 w-fit transition-colors">
-					&larr; Back to Dashboard
-				</Link>
-			</div>
+		<main className=" overflow-x-hidden pt-24 md:pt-24 pb-24 md:pb-12 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-gray-900 bg-gray-50/50">
+			
 
 			{/* Header & Search Section */}
 			<div className="relative overflow-visible rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 md:p-12 shadow-sm mb-8">

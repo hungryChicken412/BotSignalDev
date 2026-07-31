@@ -42,10 +42,10 @@ export default function DocsNavbar() {
 	return (
 		<header className="fixed top-0 left-0 right-0 md:left-64 z-40 h-16 flex items-center justify-between border-b border-gray-200/60 bg-white/70 backdrop-blur-xl shadow-sm px-4 md:px-8 transition-all duration-300">
 			{/* Left Side: Logo & Docs Breadcrumb */}
-			<div className="flex items-center gap-4 md:gap-6">
-				<div className="hidden md:flex items-center gap-2 text-sm font-medium text-gray-800">
-					<span className="text-indigo-700 bg-indigo-50 border border-indigo-100 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider">Documentation</span>
-				</div>
+			<div className="flex items-end gap-4 md:gap-6">
+				<Link href="/profile" className="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center gap-1 w-fit transition-colors">
+					&larr; Back to Dashboard
+				</Link>
 			</div>
 
 			{/* Right Side: Actions & Profile */}

@@ -231,7 +231,7 @@ export default function Dashboard() {
 	// RENDER DASHBOARD
 	// ---------------------------------------------------------
 	return (
-		<main className="ml-0 md:ml-64 mt-16 p-4 md:p-8 min-h-screen bg-gray-50/50">
+		<main className="ml-0  mt-16 p-4 md:p-8 min-h-screen bg-gray-50/50">
 			<div className="max-w-7xl mx-auto space-y-8">
 				{/* Premium AI Compatibility Section */}
 				<div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 sm:p-10 shadow-sm transition-all hover:shadow-md">

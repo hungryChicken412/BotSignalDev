@@ -41,7 +41,7 @@ export default function CitationPotentialPage() {
 	// ---------------------------------------------------------
 	if (isLoading) {
 		return (
-			<div className="ml-0 md:ml-64 mt-16 flex h-[80vh] items-center justify-center">
+			<div className="ml-0  mt-16 flex h-[80vh] items-center justify-center">
 				<Loader2 className="h-12 w-12 animate-spin text-indigo-500" />
 			</div>
 		);
@@ -49,7 +49,7 @@ export default function CitationPotentialPage() {
 
 	if (!auditId || !reportData || !reportData.results) {
 		return (
-			<div className="ml-0 md:ml-64 mt-16 p-8 flex flex-col items-center justify-center text-center">
+			<div className="ml-0  mt-16 p-8 flex flex-col items-center justify-center text-center">
 				<h2 className="text-2xl font-bold text-gray-800">No Audit Selected</h2>
 			</div>
 		);
@@ -61,7 +61,7 @@ export default function CitationPotentialPage() {
 	console.log(citationData);
 
 	return (
-		<main className="md:ml-64 pt-8 md:pt-28 px-4 md:px-8 max-w-7xl mx-auto pb-24 md:pb-16 flex flex-col gap-6 text-neutral-900 bg-neutral-50/50">
+		<main className=" pt-8 md:pt-28 px-4 md:px-8 max-w-7xl mx-auto pb-24 md:pb-16 flex flex-col gap-6 text-neutral-900 bg-neutral-50/50">
 			{/* Header Section */}
 			<div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 sm:p-10 shadow-sm transition-all hover:shadow-md">
 				<div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-indigo-50 to-purple-50 blur-3xl opacity-70 pointer-events-none" />

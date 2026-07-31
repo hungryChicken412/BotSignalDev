@@ -8,7 +8,7 @@ export default function Footer() {
 		{ href: "/terms", label: "Terms of Service" },
 		{ href: "/security", label: "Security" },
 		{ href: "#status", label: "Status" },
-		{ href: "mailto:support@RoastMySite.com", label: "Contact" },
+		{ href: "mailto:hello@botsignal.com", label: "Contact" },
 	];
 
 	const currentYear = new Date().getFullYear();

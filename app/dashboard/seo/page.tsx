@@ -86,7 +86,7 @@ export default function SeoAuditPage() {
 	// RENDER UI
 	// ---------------------------------------------------------
 	return (
-		<main className="md:ml-64 pt-20 md:pt-24 pb-24 md:pb-12 px-4 md:px-8 max-w-7xl mx-auto min-h-screen flex flex-col gap-6 text-neutral-900 bg-neutral-50/50">
+		<main className=" pt-20 md:pt-24 pb-24 md:pb-12 px-4 md:px-8 max-w-7xl mx-auto min-h-screen flex flex-col gap-6 text-neutral-900 bg-neutral-50/50">
 			{/* 1. Overview Cards (Bento Grid) */}
 			{/* Pass the main seoData down to render the top scores */}
 			<SEOOVerview data={seoCards} />
