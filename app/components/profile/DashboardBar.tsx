@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
 	{label: "Tutorials", href: "/docs", icon: FileQuestion},
 	{label: "Security", href: "/docs", icon: Shield},
 	{label: "Billing", href: "/docs", icon: CreditCardIcon},
-	{label: "Documentation", href: "/docs", icon: Notebook},
+	{label: "Documentation", href: "/docs ", icon: Notebook},
 ];
 
 // 1. Create a component that handles the actual navigation rendering
@@ -35,7 +35,7 @@ function NavigationContent() {
 			{/* Desktop Sidebar */}
 			<aside className="sticky left-0 top-0 z-50 hidden h-screen w-64 flex-col border-r border-gray-200 bg-white py-8 md:flex">
 				<div className="mb-8 flex items-center gap-3 px-6">
-					  <LogoBrand/>  
+					<LogoBrand />
 				</div>
 
 				<nav className="flex flex-1 flex-col px-3">
