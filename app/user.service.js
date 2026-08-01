@@ -8,7 +8,8 @@ import {useState} from "react";
 import {useEffect} from "react";
 import authheader from "./fetch-wrapper.js";
 
-const baseHomeUrl = "http://localhost:8000"; //'https://orange-waves.herokuapp.com'
+
+const baseHomeUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 export const baseUrl = baseHomeUrl + "/api";
 const userSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem("user")));
 

@@ -7,10 +7,12 @@ import {Plus_Jakarta_Sans} from "next/font/google";
 import Footer from "./components/FooterDocs";
 import NextTopLoader from "nextjs-toploader";
 import {ToastContainer} from "react-toastify";
+import FirebaseAnalytics from "./components/FirebaseAnalytics";
+import { Suspense } from "react";
 
 // Configure the text font
 const plusJakartaSans = Plus_Jakarta_Sans({
-	subsets: ["latin"],	
+	subsets: ["latin"],
 	weight: ["400", "500", "600", "700", "800"],
 	variable: "--font-plus-jakarta", // CSS variable name
 });
@@ -47,6 +49,10 @@ export default function RootLayout({
 
 				{children}
 				<Footer />
+
+				<Suspense fallback={null}>
+					<FirebaseAnalytics />
+				</Suspense>
 			</body>
 		</html>
 	);
