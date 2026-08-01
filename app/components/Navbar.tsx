@@ -94,7 +94,7 @@ export default function Navbar() {
 							</Link>
 						))}
 					</div>
-					<Link href="/" onClick={() => setIsOpen(false)} className="bg-primary text-on-primary font-body-md text-center text-lg font-medium px-6 py-3 rounded-full hover:bg-primary/90 transition duration-300 w-full">
+					<Link href="/#hero" onClick={() => setIsOpen(false)} className="bg-primary text-on-primary font-body-md text-center text-lg font-medium px-6 py-3 rounded-full hover:bg-primary/90 transition duration-300 w-full">
 						Run Free Audit
 					</Link>
 				</div>
