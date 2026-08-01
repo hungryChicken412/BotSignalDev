@@ -1,4 +1,4 @@
-import {Check, Sparkles, Building2, Zap} from "lucide-react";
+import {Check, Sparkles, Building2, Zap, X} from "lucide-react";
 import Link from "next/link";
 
 export default function PricingSection() {
@@ -45,19 +45,25 @@ export default function PricingSection() {
 								<div className="mt-1 bg-sky-100/50 p-1 rounded-full">
 									<Check className="w-3.5 h-3.5 text-sky-600 shrink-0" strokeWidth={3} />
 								</div>
-								<span>LLM Compatibility Scoring</span>
+								<span>SEO Analysis</span>
 							</li>
-							<li className="flex items-start gap-4">
-								<div className="mt-1 bg-sky-100/50 p-1 rounded-full">
-									<Check className="w-3.5 h-3.5 text-sky-600 shrink-0" strokeWidth={3} />
+							<li className="flex items-start gap-4 opacity-60">
+								<div className="mt-1 bg-red-100/50 p-1 rounded-full">
+									<X className="w-3.5 h-3.5 text-red-600 shrink-0" strokeWidth={3} />
 								</div>
-								<span>Information Density Analysis</span>
+								<span className="line-through decoration-red-200">LLM Compatibility Scoring</span>
 							</li>
-							<li className="flex items-start gap-4">
-								<div className="mt-1 bg-sky-100/50 p-1 rounded-full">
-									<Check className="w-3.5 h-3.5 text-sky-600 shrink-0" strokeWidth={3} />
+							<li className="flex items-start gap-4 opacity-60">
+								<div className="mt-1 bg-red-100/50 p-1 rounded-full">
+									<X className="w-3.5 h-3.5 text-red-600 shrink-0" strokeWidth={3} />
 								</div>
-								<span>PDF Report Delivery</span>
+								<span className="line-through decoration-red-200">Information Density Analysis</span>
+							</li>
+							<li className="flex items-start gap-4 opacity-60">
+								<div className="mt-1 bg-red-100/50 p-1 rounded-full">
+									<X className="w-3.5 h-3.5 text-red-600 shrink-0" strokeWidth={3} />
+								</div>
+								<span className="line-through decoration-red-200">AI Understanding Analysis</span>
 							</li>
 						</ul>
 
@@ -66,7 +72,7 @@ export default function PricingSection() {
 						</Link>
 					</div>
 
-					{/* Column 3: Paid Bundle (5 Scans) - PREMIUM STYLING */}
+					{/* Column 3: Paid Bundle (10 Scans) - PREMIUM STYLING */}
 					<div className="relative group rounded-2xl transform hover:-translate-y-2 transition-all duration-500 z-10">
 						{/* Gradient Border Wrapper */}
 						<div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-fuchsia-400 to-sky-400 rounded-2xl opacity-40 group-hover:opacity-100 blur-[2px] transition-opacity duration-500 -z-20"></div>
@@ -78,19 +84,25 @@ export default function PricingSection() {
 						<div className="h-full p-10 bg-white/70 backdrop-blur-2xl rounded-2xl flex flex-col relative overflow-hidden">
 							<div className="absolute top-6 right-6 bg-gradient-to-r from-purple-600 to-sky-500 text-white shadow-md text-[11px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1.5">
 								<Sparkles className="w-3.5 h-3.5 fill-white/20" />
-								Popular
+								Limited Time Free
 							</div>
 
 							<div className="flex items-center gap-3 mb-4">
 								<div className="p-2 bg-purple-50 rounded-lg border border-purple-100/50">
 									<Sparkles className="w-5 h-5 text-purple-600" />
 								</div>
-								<h3 className="font-headline-md text-[28px] font-medium text-on-surface tracking-tight">Scan Bundle</h3>
+								<h3 className="font-headline-md text-[28px] font-medium text-on-surface tracking-tight">Pro Beta</h3>
 							</div>
 
-							<div className="font-display-xl text-[56px] mb-8 flex items-baseline tracking-tight">
-								<span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-700 to-sky-600">$9</span>
-								<span className="font-body-md text-base text-on-surface-variant ml-2 font-normal">/ 5 scans</span>
+							<div className="mb-8">
+								<div className="font-display-xl text-[56px] flex items-baseline tracking-tight gap-3">
+									{/* Sliced Original Price */}
+									<span className="text-[32px] text-on-surface-variant/50 line-through decoration-purple-400/60 opacity-75 decoration-2">$9</span>
+									{/* Free Price */}
+									<span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-700 to-sky-600">$0</span>
+									<span className="font-body-md text-base text-on-surface-variant ml-1 font-normal">/ 10 scans</span>
+								</div>
+								<p className="text-sm font-medium text-purple-600/90 mt-2">Free for a limited time for early users!</p>
 							</div>
 
 							<ul className="space-y-5 mb-10 flex-1 font-body-md text-on-surface-variant">
@@ -98,29 +110,29 @@ export default function PricingSection() {
 									<div className="mt-1 bg-purple-100/50 p-1 rounded-full">
 										<Check className="w-3.5 h-3.5 text-purple-600 shrink-0" strokeWidth={3} />
 									</div>
-									<span className="font-medium text-on-surface">5 Comprehensive Site Audits</span>
+									<span className="font-medium text-on-surface">10 Comprehensive Site Audits</span>
 								</li>
 								<li className="flex items-start gap-4">
 									<div className="mt-1 bg-purple-100/50 p-1 rounded-full">
 										<Check className="w-3.5 h-3.5 text-purple-600 shrink-0" strokeWidth={3} />
 									</div>
-									<span>Predictive Attention Heatmaps</span>
+									<span className="font-medium text-on-surface">LLM Compatibility Scoring</span>
 								</li>
 								<li className="flex items-start gap-4">
 									<div className="mt-1 bg-purple-100/50 p-1 rounded-full">
 										<Check className="w-3.5 h-3.5 text-purple-600 shrink-0" strokeWidth={3} />
 									</div>
-									<span>Competitor Benchmarking</span>
+									<span className="font-medium text-on-surface">Information Density Analysis</span>
 								</li>
 								<li className="flex items-start gap-4">
 									<div className="mt-1 bg-purple-100/50 p-1 rounded-full">
 										<Check className="w-3.5 h-3.5 text-purple-600 shrink-0" strokeWidth={3} />
 									</div>
-									<span>API Access (JSON Results)</span>
+									<span className="font-medium text-on-surface">AI Understanding Analysis</span>
 								</li>
 							</ul>
 
-							<button className="w-full bg-gradient-to-r from-purple-600 to-sky-500 hover:from-purple-500 hover:to-sky-400 text-white shadow-[0_8px_20px_rgb(147,51,234,0.2)] hover:shadow-[0_12px_25px_rgb(147,51,234,0.3)] rounded-xl py-4 font-body-md font-medium transition-all duration-300 active:scale-[0.98]">Buy Bundle</button>
+							<button className="w-full bg-gradient-to-r from-purple-600 to-sky-500 hover:from-purple-500 hover:to-sky-400 text-white shadow-[0_8px_20px_rgb(147,51,234,0.2)] hover:shadow-[0_12px_25px_rgb(147,51,234,0.3)] rounded-xl py-4 font-body-md font-medium transition-all  cursor-pointer duration-300 active:scale-[0.98]"> Coming Soon</button>
 						</div>
 					</div>
 				</div>
@@ -140,7 +152,7 @@ export default function PricingSection() {
 							</div>
 						</div>
 
-						<button className="w-full md:w-auto bg-white/80 dark:bg-white/10 backdrop-blur-md border border-outline-variant/30 shadow-sm text-on-surface rounded-2xl px-10 py-4 font-body-md font-medium hover:bg-white dark:hover:bg-white/20 hover:text-primary hover:border-primary/30 transition-all duration-300 active:scale-[0.98] whitespace-nowrap">Contact Sales</button>
+						<a href="mailto:hello@botsignal.dev"className="w-full md:w-auto bg-white/80 dark:bg-white/10 backdrop-blur-md border border-outline-variant/30 shadow-sm text-on-surface rounded-2xl px-10 py-4 font-body-md font-medium hover:bg-white dark:hover:bg-white/20 hover:text-primary hover:border-primary/30 transition-all duration-300 active:scale-[0.98] whitespace-nowrap">Contact Sales</a>
 					</div>
 				</div>
 			</div>
