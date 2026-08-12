@@ -156,8 +156,6 @@ export default function DocumentationPage() {
 
 	return (
 		<main className=" overflow-x-hidden pt-24 md:pt-24 pb-24 md:pb-12 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-gray-900 bg-gray-50/50">
-			
-
 			{/* Header & Search Section */}
 			<div className="relative overflow-visible rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 md:p-12 shadow-sm mb-8">
 				{/* Decorative blur - scaled down on mobile to prevent stretching/performance hits */}
@@ -278,7 +276,7 @@ export default function DocumentationPage() {
 						<LifeBuoy className="w-8 h-8 text-indigo-300 mb-3 sm:mb-4" />
 						<h3 className="text-base sm:text-lg font-semibold mb-2">Still need help?</h3>
 						<p className="text-xs sm:text-sm text-gray-300 mb-5 sm:mb-6 leading-relaxed">Our support team is available 24/7 to help you resolve auditing issues.</p>
-						<a href="mailto:support@BotSignal.dev" className="block text-center w-full py-2.5 px-4 bg-white text-gray-900 font-semibold text-sm rounded-xl hover:bg-gray-50 transition-colors shadow-sm">
+						<a href="mailto:hello@BotSignal.dev" className="block text-center w-full py-2.5 px-4 bg-white text-gray-900 font-semibold text-sm rounded-xl hover:bg-gray-50 transition-colors shadow-sm">
 							Contact Support
 						</a>
 					</div>
