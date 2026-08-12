@@ -7,23 +7,14 @@
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
    </url>
-   <url>
-      <loc>https://botsignal.dev/blogs</loc>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
+
    <url>
       <loc>https://botsignal.dev/docs</loc>
       <changefreq>weekly</changefreq>
       <priority>0.9</priority>
    </url>
 
-   <!-- Blog Posts -->
-   <url>
-      <loc>https://botsignal.dev/blogs/endOfEra</loc>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
+  
 
    <!-- Documentation Modules -->
    <url>

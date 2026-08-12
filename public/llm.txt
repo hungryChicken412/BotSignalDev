@@ -13,5 +13,3 @@ BotSignal.Dev provides automated website auditing, scraping, and AI-readiness sc
 - [Technical SEO](https://botsignal.dev/docs/seo)
 - [REST API Reference](https://botsignal.dev/docs/api)
 
-## Recent Insights
-- [The End of Ten Blue Links: How to Optimize Your Startup for AI Search](https://botsignal.dev/blogs/endOfEra)
