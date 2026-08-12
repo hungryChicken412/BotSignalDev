@@ -1,0 +1,24 @@
+# General Crawlers
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /profile/
+Disallow: /auth/
+
+# Explicitly Allow Major AI Agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://botsignal.dev/sitemap.xml

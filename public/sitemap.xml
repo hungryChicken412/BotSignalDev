@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   
+   <!-- Core Pages -->
+   <url>
+      <loc>https://botsignal.dev/</loc>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/blogs</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+
+   <!-- Blog Posts -->
+   <url>
+      <loc>https://botsignal.dev/blogs/endOfEra</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <!-- Documentation Modules -->
+   <url>
+      <loc>https://botsignal.dev/docs/quickstart</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs/overview</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs/insights</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs/seo</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs/density</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs/discovery</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   
+   <!-- Billing & API -->
+   <url>
+      <loc>https://botsignal.dev/docs/billing</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs/api</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <!-- Legal & Security -->
+   <url>
+      <loc>https://botsignal.dev/docs/privacy</loc>
+      <changefreq>yearly</changefreq>
+      <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs/terms</loc>
+      <changefreq>yearly</changefreq>
+      <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://botsignal.dev/docs/security</loc>
+      <changefreq>yearly</changefreq>
+      <priority>0.6</priority>
+   </url>
+
+</urlset>

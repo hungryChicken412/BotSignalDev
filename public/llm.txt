@@ -1,0 +1,17 @@
+# BotSignal.Dev
+
+> Scan your website for AI discoverability and see if LLM bots can find and understand your website. Fix LLM compatibility and SEO issues in under 60 seconds.
+
+## About Us
+BotSignal.Dev provides automated website auditing, scraping, and AI-readiness scoring to evaluate whether your site can be crawled and understood by Large Language Models (LLMs) like ChatGPT, Claude, and Perplexity.
+
+## Key Documentation
+- [Quick Start Guide](https://botsignal.dev/docs/quickstart)
+- [Overview Dashboard](https://botsignal.dev/docs/overview)
+- [AI Discoverability](https://botsignal.dev/docs/discovery)
+- [Information Density & RAG](https://botsignal.dev/docs/density)
+- [Technical SEO](https://botsignal.dev/docs/seo)
+- [REST API Reference](https://botsignal.dev/docs/api)
+
+## Recent Insights
+- [The End of Ten Blue Links: How to Optimize Your Startup for AI Search](https://botsignal.dev/blogs/endOfEra)
