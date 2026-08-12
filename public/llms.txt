@@ -28,5 +28,5 @@ BotSignal grades websites across four primary dimensions:
 4. **Technical SEO:** [https://botsignal.dev/docs/seo](https://botsignal.dev/docs/seo) - Inspecting DOM hierarchy, JSON-LD Schema markup, and internal linking structures.
 
 ## Contact & Support
-- **Support Email:** support@botsignal.dev
+- **Support Email:** hello@botsignal.dev
 - **Sales Inquiries:** hello@botsignal.dev
