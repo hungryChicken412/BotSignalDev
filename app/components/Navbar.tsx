@@ -20,6 +20,7 @@ export default function Navbar() {
 	const navLinks = [
 		{href: "#how-it-works", label: "How it works", badge: ""},
 		{href: "/docs", label: "Documentation", badge: ""},
+		{href: "/blogs", label: "Blogs", badge: ""},
 
 		{href: "#faq", label: "FAQ", badge: ""},
 
