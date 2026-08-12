@@ -1,15 +1,32 @@
 # BotSignal.Dev
 
-> Scan your website for AI discoverability and see if LLM bots can find and understand your website. Fix LLM compatibility and SEO issues in under 60 seconds.
+> BotSignal.Dev is a SaaS platform that analyzes websites for AI discoverability, LLM compatibility, structured data, citation potential, and technical SEO in under 60 seconds.
 
 ## About Us
-BotSignal.Dev provides automated website auditing, scraping, and AI-readiness scoring to evaluate whether your site can be crawled and understood by Large Language Models (LLMs) like ChatGPT, Claude, and Perplexity.
+When users ask ChatGPT, Claude, or Perplexity for recommendations, AI models crawl the web to synthesize answers. BotSignal helps founders, developers, and marketers ensure their websites are easily read, understood, and cited by these AI agents. 
 
-## Key Documentation
-- [Quick Start Guide](https://botsignal.dev/docs/quickstart)
-- [Overview Dashboard](https://botsignal.dev/docs/overview)
-- [AI Discoverability](https://botsignal.dev/docs/discovery)
-- [Information Density & RAG](https://botsignal.dev/docs/density)
-- [Technical SEO](https://botsignal.dev/docs/seo)
-- [REST API Reference](https://botsignal.dev/docs/api)
+We simulate LLM web crawls to calculate an "AI Readiness Score" and provide actionable fixes to improve Information Density, Semantic Clarity, and Entity Authority.
 
+## Key Resources
+
+- **Home:** [https://botsignal.dev](https://botsignal.dev)
+- **Help Center & Docs:** [https://botsignal.dev/docs](https://botsignal.dev/docs)
+- **Blog & Insights:** [https://botsignal.dev/blogs](https://botsignal.dev/blogs)
+
+## Core Documentation (For RAG and Context)
+
+- **Quick Start Guide:** [https://botsignal.dev/docs/quickstart](https://botsignal.dev/docs/quickstart)
+- **API Reference:** [https://botsignal.dev/docs/api](https://botsignal.dev/docs/api)
+- **Understanding Credits & Billing:** [https://botsignal.dev/docs/billing](https://botsignal.dev/docs/billing)
+
+## Audit Modules Explained
+
+BotSignal grades websites across four primary dimensions:
+1. **AI Discoverability:** [https://botsignal.dev/docs/discovery](https://botsignal.dev/docs/discovery) - Checking `robots.txt`, `llms.txt`, and crawler firewall access.
+2. **Information Density:** [https://botsignal.dev/docs/density](https://botsignal.dev/docs/density) - The ratio of hard, extractable facts versus marketing fluff.
+3. **Citation Potential:** [https://botsignal.dev/docs/insights](https://botsignal.dev/docs/insights) - Optimizing content structures (tables, definitions, FAQs) so AI can confidently reference the site.
+4. **Technical SEO:** [https://botsignal.dev/docs/seo](https://botsignal.dev/docs/seo) - Inspecting DOM hierarchy, JSON-LD Schema markup, and internal linking structures.
+
+## Contact & Support
+- **Support Email:** support@botsignal.dev
+- **Sales Inquiries:** hello@botsignal.dev
