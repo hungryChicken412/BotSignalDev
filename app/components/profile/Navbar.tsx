@@ -71,14 +71,17 @@ export default function ProfileNavbar() {
 				) : isAuthenticated ? (
 					// --- LOGGED IN STATE ---
 					<>
-						<div className="flex items-center p-1.5 rounded-full bg-white border border-gray-200 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] transition-shadow hover:shadow-sm">
-							<div className="flex items-center gap-2.5 px-5 py-2 rounded-full bg-indigo-50/50">
-								<Zap className="h-5 w-5 text-indigo-600 fill-indigo-600/20" />
-								<span className="text-base font-medium text-indigo-900">
-									<button className="ml-1.5 px-4 md:px-6 py-2 text-sm md:text-base font-medium text-white bg-gray-900 hover:bg-gray-800 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Unlimited</button>
-								</span>
+						<a href="/profile" className="flex items-center gap-2 pl-2 md:pl-0 focus:outline-none group">
+							<div className="h-9 w-9 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-700 shadow-sm group-hover:bg-indigo-100 transition-colors">
+								{/* User Profile Icon */}
+								<svg className="w-5 h-5 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+								</svg>
 							</div>
-						</div>
+							<div className="hidden md:flex items-center gap-1">
+								<span className="text-sm font-semibold text-gray-700">Profile</span>
+							</div>
+						</a>
 					</>
 				) : (
 					// --- LOGGED OUT STATE ---
