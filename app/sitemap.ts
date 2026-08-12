@@ -27,19 +27,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/blogs/how-to-use-botsignal`,
+      url: `${baseUrl}/blogs/IntroToBotSignal`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/blogs/why-chatgpt-ignores-you`,
+      url: `${baseUrl}/blogs/whychatgptignoresyou`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/blogs/ai-hallucinations`,
+      url: `${baseUrl}/blogs/hallucinations`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
