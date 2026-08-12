@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 		siteName: "BotSignal.Dev",
 		images: [
 			{
-				url: "/og-image.png", // Add this to your public/ folder (1200x630px)
+				url: "/og-image.jpg", // Add this to your public/ folder (1200x630px)
 				width: 1200,
 				height: 630,
 				alt: "BotSignal.Dev - AI Discoverability Scanner",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "BotSignal.Dev | Will ChatGPT recommend your website?",
 		description: "Scan your website for AI discoverability and fix LLM compatibility issues in under 60 seconds.",
-		images: ["/twitter-image.png"], // Add this to your public/ folder (1200x630px)
+		images: ["/og-image.jpg"], // Add this to your public/ folder (1200x630px)
 	},
 
 	// Search Engine Crawling
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
 
 	icons: {
 		icon: "/botsignaldevicon.png",
-		apple: "/apple-touch-icon.png",
+		apple: "/og-image.jpg",
 	},
 };
 
