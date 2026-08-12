@@ -1,82 +1,122 @@
 import { MetadataRoute } from 'next'
- 
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://botsignal.dev';
+  const currentDate = new Date();
+
   return [
+    // Core Pages
     {
-      url: 'https://botsignal.dev',
-      lastModified: new Date(),
+      url: baseUrl,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1,
     },
+    
+    // Blog Section
     {
-      url: 'https://botsignal.dev/docs',
-      lastModified: new Date(),
+      url: `${baseUrl}/blogs`,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: 'https://botsignal.dev/docs/quickstart',
-      lastModified: new Date(),
+      url: `${baseUrl}/blogs/EndOfEra`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://botsignal.dev/docs/overview',
-      lastModified: new Date(),
+      url: `${baseUrl}/blogs/how-to-use-botsignal`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://botsignal.dev/docs/insights',
-      lastModified: new Date(),
+      url: `${baseUrl}/blogs/why-chatgpt-ignores-you`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://botsignal.dev/docs/seo',
-      lastModified: new Date(),
+      url: `${baseUrl}/blogs/ai-hallucinations`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    // Documentation
+    {
+      url: `${baseUrl}/docs`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/docs/quickstart`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://botsignal.dev/docs/density',
-      lastModified: new Date(),
+      url: `${baseUrl}/docs/overview`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://botsignal.dev/docs/discovery',
-      lastModified: new Date(),
+      url: `${baseUrl}/docs/insights`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://botsignal.dev/docs/billing',
-      lastModified: new Date(),
+      url: `${baseUrl}/docs/seo`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/docs/density`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/docs/discovery`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/docs/api`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    
+    // Legal & Account Info
+    {
+      url: `${baseUrl}/docs/billing`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: 'https://botsignal.dev/docs/api',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://botsignal.dev/docs/privacy',
-      lastModified: new Date(),
+      url: `${baseUrl}/docs/privacy`,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
-      url: 'https://botsignal.dev/docs/terms',
-      lastModified: new Date(),
+      url: `${baseUrl}/docs/terms`,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
-      url: 'https://botsignal.dev/docs/security',
-      lastModified: new Date(),
+      url: `${baseUrl}/docs/security`,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.6,
     },
