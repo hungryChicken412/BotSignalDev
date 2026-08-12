@@ -75,11 +75,9 @@ export default function ProfileNavbar() {
 							<div className="flex items-center gap-2.5 px-5 py-2 rounded-full bg-indigo-50/50">
 								<Zap className="h-5 w-5 text-indigo-600 fill-indigo-600/20" />
 								<span className="text-base font-medium text-indigo-900">
-									<button className="ml-1.5 px-4 md:px-6 py-2 text-sm md:text-base font-medium text-white bg-gray-900 hover:bg-gray-800 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Upgrade</button>
+									<button className="ml-1.5 px-4 md:px-6 py-2 text-sm md:text-base font-medium text-white bg-gray-900 hover:bg-gray-800 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Unlimited</button>
 								</span>
 							</div>
-
-							<button className="ml-1.5 px-6 py-2 text-base font-medium text-white bg-gray-900 hover:bg-gray-800 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Preview</button>
 						</div>
 					</>
 				) : (

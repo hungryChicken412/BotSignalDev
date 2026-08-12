@@ -80,7 +80,7 @@ export default function DocsNavbar() {
 								</span>
 							</div>
 
-							<button className="ml-1.5 px-6 py-2 text-base font-medium text-white bg-gray-900 hover:bg-gray-800 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Preview</button>
+							
 						</div>
 					</>
 				) : (
