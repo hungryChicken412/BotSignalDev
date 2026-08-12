@@ -126,10 +126,10 @@ function NavigationContent() {
 							);
 						})}
 
-						<a href={`${baseUrl}/audits/reports/${auditId}/download-pdf`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition text-gray-600 hover:bg-gray-100 hover:text-gray-900">
+						{/* <a href={`${baseUrl}/audits/reports/${auditId}/download-pdf`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition text-gray-600 hover:bg-gray-100 hover:text-gray-900">
 							<ShieldCheck className="h-5 w-5 text-gray-400" />
 							<span>Full Diagnostics Report</span>
-						</a>
+						</a> */}
 
 						 {isLoggedIn && (<button onClick={() => userService.logout()} className="flex w-full items-center gap-3 cursor-pointer rounded-lg px-4 py-3 text-sm font-medium transition text-rose-600 hover:bg-rose-100 hover:text-rose-900">
 							<LogOut className="h-5 w-5 text-rose-400" />
