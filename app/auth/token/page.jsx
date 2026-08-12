@@ -1,6 +1,6 @@
 "use client"; // REQUIRED for App Router
 
-import {useEffect, useState, Suspense} from "react";
+import {useEffect, useState, Suspense, useRef} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import {userService} from "@/app/user.service"; // Ensure path is correct
 
@@ -9,13 +9,22 @@ function TokenVerificationContent() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
+	// Extract the token here so it can be a clean dependency
+	const token = searchParams.get("token");
+
 	// Create a state to show the user what is happening
 	const [authStatus, setAuthStatus] = useState("Verifying your secure login...");
 
+	// Add a ref to prevent React 18 Strict Mode from double-firing the API call
+	const hasFetched = useRef(false);
+
 	useEffect(() => {
-		const token = searchParams.get("token");
+		// Prevent the effect from running twice in development
+		if (hasFetched.current) return;
 
 		if (token) {
+			hasFetched.current = true; // Mark as fetched so it doesn't run again
+
 			// Send the token to Django to verify it actually exists
 			userService
 				.validateToken(token)
@@ -27,19 +36,19 @@ function TokenVerificationContent() {
 					} else {
 						// Token is fake/expired! Reject them.
 						setAuthStatus("Invalid or expired session. Please log in again.");
-						setTimeout(() => router.push("/auth"), 2500); // Send back to login
+						setTimeout(() => router.push("/"), 2500); // Send back to login
 					}
 				})
 				.catch((err) => {
 					console.error("Token Validation ERROR", err);
 					setAuthStatus("An error occurred connecting to the server.");
-					setTimeout(() => router.push("/auth"), 2500);
+					setTimeout(() => router.push(), 2500);
 				});
 		} else {
 			// No token in the URL at all
 			router.push("/auth");
 		}
-	}, [searchParams, router]);
+	}, [token, router]); // Depend directly on the token, not the entire searchParams object
 
 	return (
 		<div className="flex flex-col justify-center items-center h-screen bg-slate-50">

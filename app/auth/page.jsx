@@ -1,16 +1,16 @@
 "use client";
 
-import React, { createRef, useState } from "react";
+import React, {createRef, useState} from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { userService } from "../user.service";
+import {useRouter} from "next/navigation";
+import {userService} from "../user.service";
 
 const Login = () => {
 	const [submitting, setSubmitting] = useState(false);
 
 	const router = useRouter();
 
-	const google_login_url = "http://localhost:8000/api/accounts/google/login";
+	const google_login_url = "https://api.botsignal.dev/api/accounts/google/login";
 
 	const username = createRef();
 	const password = createRef();
@@ -60,19 +60,12 @@ const Login = () => {
 				</div>
 				{/* Heading */}
 				<div className="mt-8 text-center">
-					<h1 className="text-4xl font-bold tracking-tight text-gray-900">
-						One click Sign-in!
-					</h1>
+					<h1 className="text-4xl font-bold tracking-tight text-gray-900">One click Sign-in!</h1>
 
-					<p className="mt-3 text-gray-500">
-						Login/Register using google and get started in a second!
-					</p>
+					<p className="mt-3 text-gray-500">Login/Register using google and get started in a second!</p>
 				</div>
 				{/* Google */}
-				<button
-					onClick={googleLogin}
-					className="mt-8 flex h-14 w-full items-center justify-center gap-3 rounded-full border border-gray-200 bg-white font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 hover:shadow-md"
-				>
+				<button onClick={googleLogin} className="mt-8 flex h-14 w-full items-center justify-center gap-3 rounded-full border border-gray-200 bg-white font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 hover:shadow-md">
 					<img src="/google.svg" className="h-5 w-5" alt="Google" />
 					Continue with Google
 				</button>

@@ -1,6 +1,6 @@
 import {BehaviorSubject} from "rxjs";
 
-import Router from "next/router";
+
 
 import {fetchWrapper} from "./fetch-wrapper";
 
@@ -147,7 +147,7 @@ function logout() {
 	// remove user from local storage, publish null to user subscribers and redirect to login page
 	localStorage.removeItem("token");
 	//userSubject.next(null);
-	Router.push("/");
+	window.location.href = "/"; // Use window.location.href to force a full page reload
 }
 
 function register(user) {
@@ -162,7 +162,7 @@ function registerApp(app) {
 
 function socialLogin(cookie, router) {
 	localStorage.setItem("token", cookie);
-	Router.push("/");
+	router.push("/profile");
 }
 
 // app/user.service.js

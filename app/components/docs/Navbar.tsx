@@ -1,8 +1,9 @@
 "use client";
 
-import {PaintBucket, Sparkles, Zap, LayoutDashboard} from "lucide-react";
+import {PaintBucket, Sparkles, Zap, LayoutDashboard, LogOut} from "lucide-react";
 import {useEffect, useRef, useState, type ChangeEvent, type CSSProperties} from "react";
 import Link from "next/link";
+import {userService} from "@/app/user.service";
 
 export default function DocsNavbar() {
 	const themeColor = useRef<HTMLInputElement>(null);
@@ -72,20 +73,19 @@ export default function DocsNavbar() {
 							Dashboard
 						</Link>
 
-						<div className="flex items-center p-1.5 rounded-full bg-white border border-gray-200 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] transition-shadow hover:shadow-sm">
-							<div className="flex items-center gap-2.5 px-3 md:px-5 py-2 rounded-full bg-indigo-50/50">
-								<Zap className="h-4 w-4 text-indigo-600 fill-indigo-600/20" />
-								<span className="text-sm md:text-base font-medium text-indigo-900">
-									<strong className="font-semibold text-indigo-700">12</strong> <span className="hidden sm:inline">credits</span>
-								</span>
+						<button onClick={() => userService.logout()} className="flex items-center gap-2 pl-2 md:pl-0 focus:outline-none group cursor-pointer w-full bg-transparent border-none">
+							<div className="h-9 w-9 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-600 shadow-sm group-hover:bg-rose-100 transition-colors">
+								<LogOut className="w-4 h-4 transition-transform group-hover:scale-110" strokeWidth={2.5} />
 							</div>
-							<button className="ml-1.5 px-4 md:px-6 py-2 text-sm md:text-base font-medium text-white bg-gray-900 hover:bg-gray-800 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Upgrade</button>
-						</div>
+							<div className="hidden md:flex items-center gap-1">
+								<span className="text-sm font-semibold text-gray-700 group-hover:text-rose-700 transition-colors">Log Out</span>
+							</div>
+						</button>
 					</>
 				) : (
 					// --- LOGGED OUT STATE ---
 					<>
-						<a href="http://localhost:8000/accounts/google/login" className="flex items-center gap-2 pl-2 md:pl-0 focus:outline-none group">
+						<a href="https://api.botsignal.dev/accounts/google/login" className="flex items-center gap-2 pl-2 md:pl-0 focus:outline-none group">
 							<div className="h-9 w-9 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-700 shadow-sm group-hover:bg-indigo-100 transition-colors">
 								<svg className="w-5 h-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24">
 									<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

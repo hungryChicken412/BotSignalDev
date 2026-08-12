@@ -2,9 +2,9 @@
 
 import {useState, useEffect, Suspense} from "react";
 import {useSearchParams, usePathname} from "next/navigation";
-import {Bot, Crown, LayoutDashboard, Quote, Search, ShieldCheck, Sparkles, Menu, X, type LucideIcon} from "lucide-react";
+import {Bot, Crown, LayoutDashboard, Quote, Search, ShieldCheck, Sparkles, Menu, X, type LucideIcon, LogOut} from "lucide-react";
 import Link from "next/link";
-import {baseUrl} from "@/app/user.service";
+import {baseUrl, userService} from "@/app/user.service";
 import LogoBrand from "../logo";
 
 type NavItem = {label: string; href: string; icon: LucideIcon};
@@ -26,6 +26,17 @@ function NavigationContent() {
 	const pathname = usePathname(); // GET CURRENT URL PATH
 	const auditId = searchParams.get("id");
 	const [isOpen, setIsOpen] = useState(false);
+
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	// 2. Check for the token when the sidebar loads
+	useEffect(() => {
+		// If the token exists, the user is logged in
+		const token = localStorage.getItem("token");
+		if (token) {
+			setIsLoggedIn(true);
+		}
+	}, []);
 
 	// Helper function to append the ID to the URL if it exists
 	const getHref = (basePath: string) => {
@@ -119,6 +130,11 @@ function NavigationContent() {
 							<ShieldCheck className="h-5 w-5 text-gray-400" />
 							<span>Full Diagnostics Report</span>
 						</a>
+
+						 {isLoggedIn && (<button onClick={() => userService.logout()} className="flex w-full items-center gap-3 cursor-pointer rounded-lg px-4 py-3 text-sm font-medium transition text-rose-600 hover:bg-rose-100 hover:text-rose-900">
+							<LogOut className="h-5 w-5 text-rose-400" />
+							Log Out
+						</button>)}
 					</div>
 				</nav>
 			</aside>

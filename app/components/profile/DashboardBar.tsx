@@ -1,11 +1,12 @@
 "use client";
-import {Suspense, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 // ADD usePathname HERE
 import {useSearchParams, usePathname} from "next/navigation";
-import {CreditCardIcon, DollarSignIcon, FileQuestion, LayoutDashboard, Notebook, Settings, Shield, Sparkles, type LucideIcon} from "lucide-react";
+import {CreditCardIcon, DollarSignIcon, FileQuestion, LayoutDashboard, LogOut, Notebook, Settings, Shield, Sparkles, type LucideIcon} from "lucide-react";
 import Link from "next/link";
 import SettingsModal from "./SettingsModal";
 import LogoBrand from "../logo";
+import { userService } from "@/app/user.service";
 
 type NavItem = {label: string; href: string; icon: LucideIcon};
 
@@ -29,6 +30,19 @@ function NavigationContent() {
 	const getHref = (basePath: string) => {
 		return auditId ? `${basePath}?id=${auditId}` : basePath;
 	};
+
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	
+		// 2. Check for the token when the sidebar loads
+		useEffect(() => {
+			// If the token exists, the user is logged in
+			const token = localStorage.getItem("token");
+			if (token) {
+				setIsLoggedIn(true);
+			}
+		}, []);
+
+
 
 	return (
 		<>
@@ -73,7 +87,14 @@ function NavigationContent() {
 							<Settings className={`h-5 w-5 ${isSettingsOpen ? "text-indigo-600" : ""}`} />
 							<span>Settings</span>
 						</button>
+
+						{isLoggedIn && (<button onClick={() => userService.logout()} className="flex w-full items-center gap-3 cursor-pointer rounded-lg px-4 py-3 text-sm font-medium transition text-rose-600 hover:bg-rose-100 hover:text-rose-900">
+													<LogOut className="h-5 w-5 text-rose-400" />
+													Log Out
+												</button>)}
 					</div>
+
+					
 				</nav>
 			</aside>
 

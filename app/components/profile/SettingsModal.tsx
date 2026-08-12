@@ -86,13 +86,13 @@ export default function SettingsModal({isOpen, onClose}: SettingsModalProps) {
 									<div className="flex items-center justify-between">
 										<div>
 											<p className="text-sm font-semibold text-purple-900">Available Credits</p>
-											<p className="text-3xl font-bold text-purple-700 mt-1">12</p>
+											<p className="text-3xl font-bold text-purple-700 mt-1">Unlimited</p>
 										</div>
 										<div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
 											<CreditCard className="w-6 h-6 text-purple-500" />
 										</div>
 									</div>
-									<button className="w-full mt-4 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 rounded-xl text-sm transition-colors">Buy More Credits</button>
+									<button className="ml-1.5 px-6 py-2 text-base font-medium text-white bg-gray-900 hover:bg-gray-800 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Preview</button>
 								</div>
 							</div>
 						)}

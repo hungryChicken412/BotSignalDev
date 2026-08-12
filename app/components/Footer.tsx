@@ -22,7 +22,7 @@ export default function Footer() {
 					<div className="bg-primary text-on-primary p-1 rounded-full group-hover:rotate-12 transition-transform duration-300">
 						<Sparkles className="w-4 h-4" />
 					</div>
-					RoastMySite
+					BotSignal.Dev
 				</Link>
 
 				{/* Footer Links */}
@@ -35,7 +35,7 @@ export default function Footer() {
 				</div>
 
 				{/* Dynamic Copyright */}
-				<div>© {currentYear} RoastMySite AI. All rights reserved.</div>
+				<div>© {currentYear} BotSignal.Dev</div>
 			</div>
 		</footer>
 	);

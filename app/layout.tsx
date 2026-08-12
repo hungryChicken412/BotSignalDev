@@ -28,10 +28,59 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+	// MUST UPDATE: Required for resolving relative image URLs in OG/Twitter tags
+	metadataBase: new URL("https://botsignal.dev"),
+
 	title: "BotSignal.Dev | Will ChatGPT recommend your website?",
-	description: "Scan your website for AI discoverability and if LLM bots can find and understand your website. LLM compatibility, and SEO issues in under 60 seconds.",
+	description: "Scan your website for AI discoverability and if LLM bots can find and understand your website. Fix LLM compatibility and SEO issues in under 60 seconds.",
+	keywords: ["AI SEO", "LLM optimization", "ChatGPT website scan", "bot discoverability", "AI search engine optimization", "AI crawler tool"],
+
+	// Open Graph (Facebook, LinkedIn, Discord, iMessage)
+	openGraph: {
+		title: "BotSignal.Dev | Will ChatGPT recommend your website?",
+		description: "Scan your website for AI discoverability and fix LLM compatibility issues in under 60 seconds.",
+		url: "https://botsignal.dev",
+		siteName: "BotSignal.Dev",
+		images: [
+			{
+				url: "/og-image.png", // Add this to your public/ folder (1200x630px)
+				width: 1200,
+				height: 630,
+				alt: "BotSignal.Dev - AI Discoverability Scanner",
+			},
+		],
+		locale: "en_US",
+		type: "website",
+	},
+
+	// Twitter / X
+	twitter: {
+		card: "summary_large_image",
+		title: "BotSignal.Dev | Will ChatGPT recommend your website?",
+		description: "Scan your website for AI discoverability and fix LLM compatibility issues in under 60 seconds.",
+		images: ["/twitter-image.png"], // Add this to your public/ folder (1200x630px)
+	},
+
+	// Search Engine Crawling
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-video-preview": -1,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+		},
+	},
+
+	// Canonical URL to prevent duplicate content issues
+	alternates: {
+		canonical: "https://botsignal.dev",
+	},
+
 	icons: {
-		icon: "/botsignaldevicon.png", // Maps to public/brand-icon.png
+		icon: "/botsignaldevicon.png",
 		apple: "/apple-touch-icon.png",
 	},
 };
