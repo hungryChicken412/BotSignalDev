@@ -26,6 +26,35 @@ const blogPosts: BlogPost[] = [
 		date: "Jul 22, 2026",
 		keywords: ["seo", "llm", "semantic", "entity", "future", "search"],
 	},
+	{
+		id: "IntroToBotSignal",
+		title: "The Ultimate Guide to BotSignal: Audit Your Site for AI in 60 Seconds",
+		description: "A step-by-step guide on how to run your first AI discoverability scan, interpret your readiness score, and fix critical LLM blockers.",
+		category: "Product Updates",
+		href: "/blogs/IntroToBotSignal",
+		date: "Aug 12, 2026",
+		keywords: ["guide", "tutorial", "audit", "readiness", "score", "llm"],
+	},
+
+	{
+		id: "whychatgptignoresyou",
+		title: "Why ChatGPT Doesn't Know Your Business Exists (And How to Fix It)",
+		description: "Ever wonder why AI assistants recommend your competitors instead of you? Here is a beginner-friendly guide to getting noticed by AI.",
+		category: "Beginners",
+		href: "/blogs/whychatgptignoresyou",
+		date: "Aug 12, 2026",
+		keywords: ["chatgpt", "beginner", "marketing", "basics", "strategy", "fluff"],
+	},
+
+	{
+		id: "hallucinations",
+		title: "Why AI Makes Up Fake Features About Your Product (And How to Stop It)",
+		description: "Ever caught ChatGPT hallucinating a service you don't offer? Here's why AI gets confused and how to take back control of your brand's story.",
+		category: "Insights",
+		href: "/blogs/hallucinations",
+		date: "Aug 12, 2026",
+		keywords: ["hallucination", "chatgpt", "brand", "content", "fake", "lies", "quirks"],
+	},
 ];
 
 export default function BlogIndexPage() {
