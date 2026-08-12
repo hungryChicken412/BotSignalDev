@@ -13,8 +13,8 @@ export default function Home() {
 		<>
 			<Navbar />
 			<main className="max-w-[1728px] mx-auto w-full">
-				<Hero />
-				{/* <HeroLogin/>   */}
+				{/* <Hero /> */}
+				<HeroLogin/>
 
 				<WhyItMatters />
 				<HowItWorks />
