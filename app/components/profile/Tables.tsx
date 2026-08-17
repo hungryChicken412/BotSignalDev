@@ -164,7 +164,7 @@ export default function Tables() {
 												<div className="w-10 h-10 rounded-lg border border-gray-200 bg-gray-50 flex items-center justify-center shrink-0">{isProcessing ? <Loader2 className="w-5 h-5 text-gray-400 animate-spin" /> : <Globe className="w-5 h-5 text-gray-400" />}</div>
 												<div>
 
-													<Link href={`/dashboard?id=${report.id}`}><p className="font-bold text-blue-900 text-base">{getDomain(report.url)}</p></Link>
+													<Link href={`/dashboard?id=${report.id}`}><p className="font-bold text-blue-900 cursor-pointer text-base">{getDomain(report.url)}</p></Link>
 													<p className="text-xs text-gray-400 mt-0.5">{report.url}</p>
 												</div>
 											</div>
