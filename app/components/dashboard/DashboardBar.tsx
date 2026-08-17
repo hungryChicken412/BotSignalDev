@@ -2,7 +2,7 @@
 
 import {useState, useEffect, Suspense} from "react";
 import {useSearchParams, usePathname} from "next/navigation";
-import {Bot, Crown, LayoutDashboard, Quote, Search, ShieldCheck, Sparkles, Menu, X, type LucideIcon, LogOut} from "lucide-react";
+import {Bot, Crown, LayoutDashboard, Quote, Search, ShieldCheck, Sparkles, Menu, X, type LucideIcon, LogOut, HelpCircle} from "lucide-react";
 import Link from "next/link";
 import {baseUrl, userService} from "@/app/user.service";
 import LogoBrand from "../logo";
@@ -12,6 +12,7 @@ type NavItem = {label: string; href: string; icon: LucideIcon};
 const navItems: NavItem[] = [
 	{label: "Overview", href: "/dashboard", icon: LayoutDashboard},
 	{label: "SEO", href: "/dashboard/seo", icon: Search},
+	{label: "Documentation", href: "/docs", icon: HelpCircle},
 ];
 
 const proNavItems: NavItem[] = [
@@ -131,10 +132,12 @@ function NavigationContent() {
 							<span>Full Diagnostics Report</span>
 						</a> */}
 
-						 {isLoggedIn && (<button onClick={() => userService.logout()} className="flex w-full items-center gap-3 cursor-pointer rounded-lg px-4 py-3 text-sm font-medium transition text-rose-600 hover:bg-rose-100 hover:text-rose-900">
-							<LogOut className="h-5 w-5 text-rose-400" />
-							Log Out
-						</button>)}
+						{isLoggedIn && (
+							<button onClick={() => userService.logout()} className="flex w-full items-center gap-3 cursor-pointer rounded-lg px-4 py-3 text-sm font-medium transition text-rose-600 hover:bg-rose-100 hover:text-rose-900">
+								<LogOut className="h-5 w-5 text-rose-400" />
+								Log Out
+							</button>
+						)}
 					</div>
 				</nav>
 			</aside>

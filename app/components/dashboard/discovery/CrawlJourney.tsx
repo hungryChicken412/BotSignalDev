@@ -24,7 +24,7 @@ function CrawlJourney({ crawlSteps }: { crawlSteps: any }) {
 			{/* Header */}
 			<div className="flex flex-col gap-1.5 mb-4">
 				<div className="flex items-center justify-between">
-					<span className="text-[12.5px] font-bold uppercase tracking-widest text-indigo-500">AI Discovery Journey</span>
+					<span className="text-[12.5px] font-bold uppercase tracking-widest text-indigo-500">AI Discovery Journey </span>
 					<span className="rounded-full bg-emerald-50 px-1.5 py-0.5 text-md font-bold text-emerald-600 border border-emerald-100/50 shadow-sm">92/100</span>
 				</div>
 				<h2 className="text-sm font-bold text-slate-800 leading-tight tracking-tight">How AI discovers your website</h2>

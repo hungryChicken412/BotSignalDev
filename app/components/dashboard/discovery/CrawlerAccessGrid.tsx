@@ -1,9 +1,8 @@
 "use client";
 
 import {useState} from "react";
-import {CheckCircle, XCircle, AlertTriangle, AlertCircle, LucideIcon, HelpCircle} from "lucide-react";
+import {CheckCircle, XCircle, AlertTriangle, AlertCircle, LucideIcon} from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 // 1. TypeScript Interfaces for better type safety
 interface MetadataItem {
@@ -82,12 +81,7 @@ export default function CrawlerAccessGrid({botsData}: CrawlerAccessGridProps) {
 			{/* Cards Section */}
 			<div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
 				<div className="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
-					<h3 className="text-2xl font-semibold text-slate-900">
-						Crawler Access Grid{" "}
-						<a target="_blank" href="/docs/discovery">
-							<HelpCircle className="text-gray cursor-pointer" />
-						</a>
-					</h3>
+					<h3 className="text-2xl font-semibold text-slate-900">Crawler Access Grid</h3>
 				</div>
 
 				<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
@@ -118,12 +112,7 @@ export default function CrawlerAccessGrid({botsData}: CrawlerAccessGridProps) {
 			{activeBot && (
 				<div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
 					<div className="mb-6 border-b border-slate-200 pb-4">
-						<h3 className="text-xl font-semibold text-slate-900">
-							Technical Metadata for {activeBot.name}{" "}
-							<a target="_blank" href="/docs/discovery">
-								<HelpCircle className="text-gray cursor-pointer" />
-							</a>
-						</h3>
+						<h3 className="text-xl font-semibold text-slate-900">Technical Metadata for {activeBot.name}</h3>
 					</div>
 
 					<div className="space-y-4">
