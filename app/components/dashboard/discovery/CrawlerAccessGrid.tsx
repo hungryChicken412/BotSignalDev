@@ -1,14 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import {
-	CheckCircle,
-	XCircle,
-	AlertTriangle,
-	AlertCircle,
-	LucideIcon,
-} from "lucide-react";
+import {useState} from "react";
+import {CheckCircle, XCircle, AlertTriangle, AlertCircle, LucideIcon, HelpCircle} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 // 1. TypeScript Interfaces for better type safety
 interface MetadataItem {
@@ -70,13 +65,9 @@ const getMetadataUI = (state: string) => {
 	}
 };
 
-export default function CrawlerAccessGrid({
-	botsData,
-}: CrawlerAccessGridProps) {
+export default function CrawlerAccessGrid({botsData}: CrawlerAccessGridProps) {
 	// 4. Safely initialize state with a fallback
-	const [activeBotId, setActiveBotId] = useState<string>(
-		botsData?.[0]?.id || "",
-	);
+	const [activeBotId, setActiveBotId] = useState<string>(botsData?.[0]?.id || "");
 
 	// Early return if no data is provided to prevent crashes
 	if (!botsData || botsData.length === 0) {
@@ -92,7 +83,10 @@ export default function CrawlerAccessGrid({
 			<div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
 				<div className="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
 					<h3 className="text-2xl font-semibold text-slate-900">
-						Crawler Access Grid
+						Crawler Access Grid{" "}
+						<a target="_blank" href="/docs/discovery">
+							<HelpCircle className="text-gray cursor-pointer" />
+						</a>
 					</h3>
 				</div>
 
@@ -102,32 +96,15 @@ export default function CrawlerAccessGrid({
 						const isActive = activeBotId === bot.id;
 
 						// Dynamically grab the correct icon component from the map, fallback to AlertCircle
-						const CurrentStatusIcon =
-							IconMap[bot.StatusIcon] || AlertCircle;
+						const CurrentStatusIcon = IconMap[bot.StatusIcon] || AlertCircle;
 
 						return (
-							<button
-								key={bot.id}
-								onClick={() => setActiveBotId(bot.id)}
-								className={`flex flex-col items-center justify-center text-center p-4 rounded-2xl border transition-all duration-200 ${
-									isActive
-										? "border-slate-900 bg-slate-100 shadow-md scale-[1.02]"
-										: "border-slate-200 bg-slate-50 hover:border-slate-400"
-								}`}
-							>
+							<button key={bot.id} onClick={() => setActiveBotId(bot.id)} className={`flex flex-col items-center justify-center text-center p-4 rounded-2xl border transition-all duration-200 ${isActive ? "border-slate-900 bg-slate-100 shadow-md scale-[1.02]" : "border-slate-200 bg-slate-50 hover:border-slate-400"}`}>
 								<div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center mb-2 overflow-hidden">
-									<Image
-										width={32}
-										height={32}
-										alt={`${bot.name} icon`}
-										src={bot.iconLogo}
-										className="object-contain"
-									/>
+									<Image width={32} height={32} alt={`${bot.name} icon`} src={bot.iconLogo} className="object-contain" />
 								</div>
 
-								<div
-									className={`flex items-center text-[11px] uppercase tracking-[0.18em] font-semibold mt-1 gap-1 ${bot.statusColor}`}
-								>
+								<div className={`flex items-center text-[11px] uppercase tracking-[0.18em] font-semibold mt-1 gap-1 ${bot.statusColor}`}>
 									<CurrentStatusIcon className="w-4 h-4" />
 									{bot.status}
 								</div>
@@ -142,35 +119,26 @@ export default function CrawlerAccessGrid({
 				<div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
 					<div className="mb-6 border-b border-slate-200 pb-4">
 						<h3 className="text-xl font-semibold text-slate-900">
-							Technical Metadata for {activeBot.name}
+							Technical Metadata for {activeBot.name}{" "}
+							<a target="_blank" href="/docs/discovery">
+								<HelpCircle className="text-gray cursor-pointer" />
+							</a>
 						</h3>
 					</div>
 
 					<div className="space-y-4">
 						{/* Render the specific metadata for the active bot */}
 						{activeBot.metadata.map((item, index) => {
-							const { Icon, iconColor, badgeStyle } =
-								getMetadataUI(item.state);
+							const {Icon, iconColor, badgeStyle} = getMetadataUI(item.state);
 
 							return (
-								<div
-									key={index}
-									className="flex flex-col sm:flex-row sm:items-center justify-between py-3 border-b border-slate-200 last:border-0 group gap-2"
-								>
+								<div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between py-3 border-b border-slate-200 last:border-0 group gap-2">
 									<div className="flex items-center gap-3">
-										<Icon
-											className={`w-5 h-5 ${iconColor}`}
-										/>
-										<span className="text-base font-medium text-slate-900 group-hover:underline decoration-slate-300 underline-offset-4">
-											{item.name}
-										</span>
+										<Icon className={`w-5 h-5 ${iconColor}`} />
+										<span className="text-base font-medium text-slate-900 group-hover:underline decoration-slate-300 underline-offset-4">{item.name}</span>
 									</div>
 
-									<span
-										className={`text-sm font-mono px-2 py-1 rounded w-fit ${badgeStyle}`}
-									>
-										{item.detail}
-									</span>
+									<span className={`text-sm font-mono px-2 py-1 rounded w-fit ${badgeStyle}`}>{item.detail}</span>
 								</div>
 							);
 						})}
