@@ -1,6 +1,10 @@
 import {useState} from "react";
 import {Boxes, Check, GitFork, Link2Off, Network, AlertTriangle, X, ArrowRight} from "lucide-react";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
 // 1. Define the expected shape of your architecture props
 export type ArchitectureProps = {
 	brokenLinks: number;
@@ -40,12 +44,14 @@ export function SiteArchitecture({data}: {data: ArchitectureProps}) {
 	const currentModal = activeModal ? modalConfig[activeModal] : null;
 
 	return (
-		<section className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm">
+		<section className="bg-white border border-neutral-200 rounded-2xl  shadow-sm">
 			<div className="p-6 border-b border-neutral-200 flex items-center gap-3">
 				<div className="w-8 h-8 rounded-2xl bg-neutral-100 flex items-center justify-center">
 					<Network className="text-neutral-900 w-4 h-4" />
 				</div>
-				<h2 className="text-xl font-medium text-neutral-900">Site Architecture</h2>
+				<h2 className="text-xl font-medium text-neutral-900 flex items-center ">
+					Site Architecture <Tooltip content="Maps how bots navigate your site. Broken links and excessive redirect chains waste 'crawl budget' and frequently cause AI agents to abandon your site entirely" />
+				</h2>
 			</div>
 
 			<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-200">

@@ -1,5 +1,9 @@
 import { Zap } from "lucide-react";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
 // 1. Define the single data prop structure
 export type ActionPlanData = {
 	title?: string; // Optional, defaults to "Action Plan"
@@ -21,7 +25,9 @@ export function ActionPlanSection({ data }: { data: ActionPlanData }) {
 
 	return (
 		<section className="mt-12 border-t border-gray-200 pt-12">
-			<h2 className="text-3xl font-semibold mb-8">{sectionTitle}</h2>
+			<h2 className="text-3xl font-semibold mb-8 flex items-center ">
+				{sectionTitle} <Tooltip content="We run simulated queries against your extracted text. If AI cannot reliably answer critical questions about your product, it may hallucinate or ignore your brand entirely. Implement these Quick Wins to fix it" />
+			</h2>
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 				{/* Quick Wins Column */}
 				<div className="lg:col-span-1">

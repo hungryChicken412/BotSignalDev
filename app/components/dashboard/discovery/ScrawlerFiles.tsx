@@ -1,5 +1,9 @@
 "use client";
 
+
+
+
+
 import {
 	FileText,
 	Check,
@@ -34,6 +38,7 @@ const iconMap: Record<string, LucideIcon> = {
 export function ScrawlerFiles({ files }: ScrawlerFilesProps) {
 	return (
 		<div className="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
+			
 			{files.map((file) => {
 				// Dynamically resolve the icon
 				const IconComponent = iconMap[file.icon] || File;

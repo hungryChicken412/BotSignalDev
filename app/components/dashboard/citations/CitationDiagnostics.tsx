@@ -2,6 +2,11 @@
 import {BarChart3, BookOpen, ListOrdered, MessageSquare, Network, TableProperties, type LucideIcon} from "lucide-react";
 import DiagnosticCard from "./Diagnostic";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
+
 const diagnosticIcons = {
 	"Clear Definitions": BookOpen,
 	"How-to Content": ListOrdered,
@@ -28,7 +33,9 @@ export function CitationDiagnostics({data}: {data: DiagnosticDataItem[]}) {
 	console.log(data);
 	return (
 		<section className="flex flex-col gap-4">
-			<h3 className="text-xl md:text-2xl font-semibold text-neutral-900">Citation Diagnostics</h3>
+			<h3 className="text-xl md:text-2xl font-semibold text-neutral-900 flex items-center ">
+				Citation Diagnostics <Tooltip content="Checks for specific structural elements like tables, lists, and FAQs. AI agents heavily prioritize these formats when formulating answers." />
+			</h3>
 
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 				{data.map((item) => (

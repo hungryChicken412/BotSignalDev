@@ -4,6 +4,11 @@ import {CheckCircle, ArrowDown, ArrowUp} from "lucide-react";
 import type {LucideIcon} from "lucide-react";
 import {memo} from "react";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
+
 type ReadynessMetric = {
 	label: string;
 	value: string | number;
@@ -42,7 +47,9 @@ function Readyness({title = "AI Readiness", score, maxScore = 100, status, statu
 					<div className="w-full pb-8">
 						<p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-400">{title}</p>
 
-						<h2 className="mt-2 text-2xl font-semibold tracking-tight">AI Readiness Score</h2>
+						<h2 className="mt-2 text-2xl font-semibold tracking-tight flex items-center ">
+							AI Readiness Score <Tooltip content="Your aggregate grade combining crawlability, semantic structure, content density, and technical SEO. Improve this score by completing the tasks in your Top Improvements list." />
+						</h2>
 					</div>
 					<div className="relative w-48 h-48 flex items-center justify-center mb-6">
 						<svg className="w-full h-full" viewBox="0 0 100 100">

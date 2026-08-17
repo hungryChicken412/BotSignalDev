@@ -3,6 +3,10 @@
 import React, {memo} from "react";
 import {BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell} from "recharts";
 
+
+
+
+
 // 1. Define the single data prop structure
 export type ReusabilityData = {
 	title?: string;
@@ -25,7 +29,7 @@ function AIReusability({data}: {data: ReusabilityData}) {
 		<div className="md:col-span-8 bg-white border border-gray-100 rounded-2xl p-8 flex flex-col justify-between shadow-[0px_4px_20px_-4px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0px_8px_24px_-4px_rgba(0,0,0,0.08)]">
 			{/* Header Section */}
 			<div className="mb-10">
-				<h2 className="text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400 mb-3">{sectionTitle}</h2>
+				<h2 className="text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400 mb-3">{sectionTitle} </h2>
 				<div className="flex items-baseline gap-2">
 					<p className="text-4xl font-semibold text-gray-900 tracking-tight">{data.score}%</p>
 					<p className="text-sm font-medium text-gray-500">{data.comparisonText}</p>

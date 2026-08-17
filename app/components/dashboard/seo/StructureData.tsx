@@ -1,5 +1,9 @@
 import {CheckCircle2, Code2, AlertTriangle} from "lucide-react";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
 export type AuditData = {
 	detected_types: string[];
 	present_important_schemas: string[];
@@ -23,12 +27,14 @@ export function StructureData({data}: {data: AuditData}) {
 	const {detected_types, present_important_schemas, missing_important_schemas, extra_schemas, validation_errors, deductions, score} = data;
 
 	return (
-		<section className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm h-fit">
+		<section className="bg-white border border-neutral-200 rounded-2xl  shadow-sm h-fit">
 			{/* Header */}
 			<div className="p-5 border-b border-neutral-200 flex justify-between items-center bg-indigo-900/5">
 				<div className="flex items-center gap-2">
 					<Code2 className="w-4 h-4 text-indigo-700" />
-					<h2 className="text-base font-semibold text-indigo-950">Schema Data</h2>
+					<h2 className="text-base font-semibold text-indigo-950 flex items-center ">
+						Schema Data <Tooltip content="Identifies structured data on your page. AI models rely heavily on schema markup to definitively understand entities, products, and FAQs without having to guess." />
+					</h2>
 				</div>
 
 				<span className="inline-flex items-center px-2 py-0.5 rounded-[10px] font-bold uppercase tracking-wider bg-indigo-100 text-indigo-800 border border-indigo-200 text-[10px]">Score {score}/100</span>

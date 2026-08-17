@@ -1,5 +1,9 @@
 import { Activity } from "lucide-react";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
 // 1. Define the single data prop structure
 export type ExecutiveSummaryData = {
 	badgeText: string;
@@ -37,11 +41,12 @@ export function ExecutiveSummarySection({
 			<div className="md:col-span-8 bg-white rounded-2xl border mt-10 md:mt-0 border-gray-200 p-2 md:p-8 shadow-sm">
 				<div className="max-w-2xl">
 					<div className="flex items-center gap-3">
-						<p className="text-xs font-bold uppercase tracking-widest text-indigo-500">{data.badgeText}</p>
+						<p className="text-xs font-bold uppercase tracking-widest text-indigo-500 flex">{data.badgeText}</p>
 						<span className="relative flex h-2.5 w-2.5">
 							<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
 							<span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-500"></span>
-						</span>
+						</span>{" "}
+						<Tooltip content="This is the AI's synthesized understanding of your website's core purpose. If this summary is inaccurate or missing key features, you need to clarify your site's value proposition." />
 					</div>
 
 					<h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900">{data.title}</h2>

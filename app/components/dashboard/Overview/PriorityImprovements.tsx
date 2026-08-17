@@ -2,6 +2,10 @@
 
 import { AlertCircle, AlertTriangle } from "lucide-react";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
 
 
 type ImprovementItem = {
@@ -22,7 +26,9 @@ export default function PriorityImprovements({
 }: ImprovementsProps) {
 	return (
 		<div className="bg-white rounded-3xl border border-gray-200 p-0">
-			<h3 className="text-2xl font-bold text-gray-900 mb-8 p-8 pb-0">Top Improvements</h3>
+			<h3 className="text-2xl font-bold text-gray-900 mb-8 p-8 pb-0 flex items-center">
+				Top Improvements <Tooltip content="A prioritized list of actionable fixes. Resolving these specific issues will directly increase your overall AI Readiness score by the point values shown." />
+			</h3>
 			<div className="space-y-6 p-2">
 				{Improvements.highPriority.map((item, index) => (
 					<div key={index + "highPriority"} className="flex items-center justify-between p-6 border border-gray-200 rounded-2xl hover:bg-gray-50 transition-colors duration-200">

@@ -10,6 +10,11 @@ import Image from "next/image";
 // In your dashboard/page.tsx
 import dynamic from "next/dynamic";
 import {useMemo} from "react";
+import Tooltip from "../components/Tooltip";
+
+
+
+
 
 // 1. Swap your normal import for a dynamic one:
 // import DataRadar from "../components/dashboard/Overview/dataRadar";
@@ -234,17 +239,18 @@ export default function Dashboard() {
 		<main className="ml-0  mt-16 p-4 md:p-8 min-h-screen bg-gray-50/50">
 			<div className="max-w-7xl mx-auto space-y-8">
 				{/* Premium AI Compatibility Section */}
-				<div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 sm:p-10 shadow-sm transition-all hover:shadow-md">
+				<div className="relative  rounded-3xl border border-gray-200 bg-white p-6 sm:p-10 shadow-sm transition-all hover:shadow-md">
 					<div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-indigo-50 to-purple-50 blur-3xl opacity-70 pointer-events-none" />
 
 					<div className="relative z-10 flex flex-col lg:flex-row lg:items-start justify-between gap-6">
 						<div className="max-w-2xl">
 							<div className="flex items-center gap-3">
-								<p className="text-xs font-bold uppercase tracking-widest text-indigo-500">AI Compatibility</p>
+								<p className="text-xs font-bold uppercase tracking-widest text-indigo-500">AI Compatibility </p>
 								<span className="relative flex h-2.5 w-2.5">
 									<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
 									<span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-500"></span>
-								</span>
+								</span>{" "}
+								<Tooltip position="bottom" content="Shows how effectively major AI models (like ChatGPT and Claude) can access and extract information from your site based on your current crawler permissions." />
 							</div>
 
 							<h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900">{resultsObj.overview?.header?.title || "Analysis Complete"}</h2>

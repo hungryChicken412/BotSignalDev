@@ -1,5 +1,9 @@
 import { memo } from "react";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
 
 function CitationScore({score}: {score: number}) {
 	const radius = 45;
@@ -9,10 +13,12 @@ function CitationScore({score}: {score: number}) {
 	const percentage = Math.max(0, Math.min(1, score / maxScore));
 	const dashOffset = circumference * (1 - percentage);
 	return (
-		<div className="md:col-span-4 bg-white border border-neutral-200 rounded-2xl p-6 flex flex-col items-center justify-center relative overflow-hidden group shadow-sm">
+		<div className="md:col-span-4 bg-white border border-neutral-200 rounded-2xl p-6 flex flex-col items-center justify-center relative  group shadow-sm">
 			<div className="absolute inset-0 bg-neutral-50 opacity-0  transition-opacity duration-300 pointer-events-none"></div>
 
-			<h2 className="text-2xl font-bold text-gray-900 mb-6 w-full text-left">Quoteability Score</h2>
+			<h2 className="text-2xl font-bold text-gray-900 mb-6 w-full text-left flex items-center">
+				Quoteability Score <Tooltip content="Measures the likelihood of an AI model extracting and directly quoting your exact text. Higher scores indicate dense, highly factual content." />
+			</h2>
 
 			<div className="relative w-48 h-48 flex items-center justify-center z-10">
 				<svg className="w-full h-full" viewBox="0 0 100 100">
@@ -35,7 +41,8 @@ function CitationScore({score}: {score: number}) {
 
 			<div className="mt-6 flex items-center gap-2 text-sm text-neutral-500 relative z-10">
 				<span className="w-2 h-2 rounded-full bg-neutral-900"></span>
-				Above industry average
+				Ideally over 80%
+
 			</div>
 		</div>
 	);

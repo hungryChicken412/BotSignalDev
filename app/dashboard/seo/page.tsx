@@ -8,6 +8,10 @@ import {SEOOVerview} from "../../components/dashboard/seo/SEOOverview";
 import {MediaData} from "@/app/components/dashboard/seo/MediaData";
 import {StructureData} from "@/app/components/dashboard/seo/StructureData";
 
+
+
+
+
 import dynamic from "next/dynamic";
 
 const SeoAnalysis = dynamic(() => import("@/app/components/dashboard/seo/SeoAnalysis"), {

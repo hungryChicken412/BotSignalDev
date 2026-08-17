@@ -1,4 +1,5 @@
 "use client";
+import Tooltip from "@/app/components/Tooltip"
 
 
 
@@ -24,7 +25,9 @@ function CrawlJourney({ crawlSteps }: { crawlSteps: any }) {
 			{/* Header */}
 			<div className="flex flex-col gap-1.5 mb-4">
 				<div className="flex items-center justify-between">
-					<span className="text-[12.5px] font-bold uppercase tracking-widest text-indigo-500">AI Discovery Journey </span>
+					<span className="text-[12.5px] font-bold uppercase tracking-widest text-indigo-500 flex items-center">
+						AI Discovery Journey <Tooltip content="Visualizes the step-by-step path an AI crawler takes to parse your site. Any warnings or errors here represent roadblocks that prevent AI from properly citing your content." />{" "}
+					</span>
 					<span className="rounded-full bg-emerald-50 px-1.5 py-0.5 text-md font-bold text-emerald-600 border border-emerald-100/50 shadow-sm">92/100</span>
 				</div>
 				<h2 className="text-sm font-bold text-slate-800 leading-tight tracking-tight">How AI discovers your website</h2>
@@ -32,7 +35,7 @@ function CrawlJourney({ crawlSteps }: { crawlSteps: any }) {
 
 			{/* Timeline */}
 			<div className="relative space-y-0">
-				{crawlSteps.map((step : any, index : any) => {
+				{crawlSteps.map((step: any, index: any) => {
 					const style = colors[step.status as keyof typeof colors];
 
 					return (

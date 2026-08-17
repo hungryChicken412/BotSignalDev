@@ -3,6 +3,14 @@
 import React, {useState} from "react";
 import {Copy, Check, Sparkles, User, ArrowRight} from "lucide-react";
 
+import Tooltip from "@/app/components/Tooltip";
+
+
+
+
+
+
+
 export interface AICitation {
 	id: string;
 	query: string;
@@ -33,7 +41,9 @@ export function Quotable({citations}: QuotableProps) {
 				</div>
 
 				<div>
-					<h3 className="text-[17px] font-semibold text-slate-900 tracking-tight">Predicted AI Citations</h3>
+					<h3 className="text-[17px] font-semibold text-slate-900 tracking-tight flex items-center">
+						Predicted AI Citations <Tooltip content="Simulates how AI agents might extract specific snippets from your website to answer real-world user queries." />
+					</h3>
 					<p className="text-[13px] text-slate-500 mt-0.5">How LLMs will likely quote your content</p>
 				</div>
 			</div>
