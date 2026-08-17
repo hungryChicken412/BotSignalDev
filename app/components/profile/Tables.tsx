@@ -163,7 +163,8 @@ export default function Tables() {
 											<div className="flex items-center gap-4">
 												<div className="w-10 h-10 rounded-lg border border-gray-200 bg-gray-50 flex items-center justify-center shrink-0">{isProcessing ? <Loader2 className="w-5 h-5 text-gray-400 animate-spin" /> : <Globe className="w-5 h-5 text-gray-400" />}</div>
 												<div>
-													<p className="font-bold text-gray-900 text-base">{getDomain(report.url)}</p>
+
+													<Link href={`/dashboard?id=${report.id}`}><p className="font-bold text-blue-900 text-base">{getDomain(report.url)}</p></Link>
 													<p className="text-xs text-gray-400 mt-0.5">{report.url}</p>
 												</div>
 											</div>
@@ -192,14 +193,14 @@ export default function Tables() {
 													<Loader2 className="w-5 h-5 text-gray-400 animate-spin" />
 												</div>
 											) : (
-												<div className="flex items-center justify-end gap-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-													<a href={`${baseUrl}/audits/reports/${report.id}/download-pdf`}>
+												<div className="flex items-center justify-end gap-4 text-gray-400  transition-opacity">
+													
+													{/* <a href={`${baseUrl}/audits/reports/${report.id}/download-pdf`}>
 														<Download className="w-4 h-4 cursor-pointer hover:text-gray-900 transition-colors" />{" "}
-													</a>
+													</a> */}
 													<Link href={`/dashboard?id=${report.id}`}>
 														<Eye className="w-4 h-4 cursor-pointer hover:text-gray-900 transition-colors" />{" "}
 													</Link>
-
 													{/* Added onClick handler to Trash2 */}
 													<Trash2 onClick={() => handleDelete(report.id)} className="w-4 h-4 cursor-pointer hover:text-red-500 transition-colors" />
 												</div>
