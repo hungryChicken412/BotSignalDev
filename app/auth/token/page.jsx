@@ -1,16 +1,16 @@
 "use client"; // REQUIRED for App Router
 
 import {useEffect, useState, Suspense, useRef} from "react";
-import {useRouter, useSearchParams} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {userService} from "@/app/user.service"; // Ensure path is correct
 
 // 1. Extract the core logic into a separate component
 function TokenVerificationContent() {
 	const router = useRouter();
-	const searchParams = useSearchParams();
+	
 
 	// Extract the token here so it can be a clean dependency
-	const token = searchParams.get("token");
+	const token = localStorage
 
 	// Create a state to show the user what is happening
 	const [authStatus, setAuthStatus] = useState("Verifying your secure login...");

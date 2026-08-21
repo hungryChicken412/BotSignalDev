@@ -4,10 +4,17 @@ import React, {useState, useEffect} from "react";
 import {Loader2, Download, Eye, Filter, Globe, Minus, MoreHorizontal, Trash2, Shield, ExternalLink} from "lucide-react";
 import {ShieldCheck, ShieldAlert, ShieldX} from "lucide-react"; // ... inside your render
 
+import {useRouter} from "next/navigation";
+
+
+
 import {userService} from "@/app/user.service";
 import ShowCustomToast from "@/app/components/CustomToast";
 import {baseUrl} from "@/app/user.service";
 import Link from "next/link";
+
+
+
 
 // Define our expected data shapes
 export interface Report {
@@ -30,6 +37,11 @@ export interface PaginatedResponse {
 export default function Tables() {
 	const [reports, setReports] = useState<Report[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
+
+	const router = useRouter();
+
+
+
 
 	// Pagination states
 	const [nextPage, setNextPage] = useState<string | null>(null);
@@ -60,13 +72,18 @@ export default function Tables() {
 			}
 		} catch (error) {
 			console.error("Failed to fetch reports", error);
-			const errorMessage = typeof error === "string" ? error : (error as Error).message || "An unexpected error occurred.";
+			const errorMessage = typeof error === "string" ? error : (error as Error).message || "Please login First!";
 
 			ShowCustomToast({
-				label: `Action Failed`,
+				label: `Action Failed `,
 				info: errorMessage,
 				type: "error",
 			});
+			localStorage.removeItem("token");
+
+			router.push("/")
+
+
 		} finally {
 			setIsLoading(false);
 		}
@@ -98,6 +115,7 @@ export default function Tables() {
 				info: "Failed to delete the scan. Please try again.",
 				type: "error",
 			});
+
 		}
 	};
 
