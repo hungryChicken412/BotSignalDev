@@ -1,77 +1,79 @@
 "use client";
 
-import React, {createRef, useState} from "react";
+import React, {useState} from "react";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
-import {userService} from "../user.service";
+import {Sparkles, Loader2, ArrowLeft} from "lucide-react";
 
-const Login = () => {
-	const [submitting, setSubmitting] = useState(false);
+export default function Login() {
+	const [isRedirecting, setIsRedirecting] = useState(false);
 
-	const router = useRouter();
-
-	const google_login_url = "https://api.botsignal.dev/api/accounts/google/login";
-
-	const username = createRef();
-	const password = createRef();
-
-	const onSubmit = (e) => {
-		e.preventDefault();
-
-		setSubmitting(true);
-
-		userService
-			.login(username.current.value, password.current.value)
-			.then(() => {
-				router.push("/");
-			})
-			.catch((err) => {
-				console.log(err);
-				setSubmitting(false);
-			});
-	};
-
-	const googleLogin = () => {
-		window.open(google_login_url, "google-login");
+	const handleGoogleLogin = () => {
+		setIsRedirecting(true);
+		// Direct browser to your Django Google OAuth endpoint
+		window.location.href = "https://api.botsignal.dev/accounts/google/login";
 	};
 
 	return (
-		<div className="relative min-h-screen overflow-hidden bg-[#F7EFF5] flex items-center justify-center px-6">
-			{/* Background Decorations */}
+		<div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gray-50/50 font-sans">
+			{/* Ambient Background Gradients (Vercel/Linear style) */}
+			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-tr from-indigo-500/10 to-purple-500/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-			<div className="absolute inset-0">
-				<div className="absolute -top-32 left-10 h-96 w-96 rounded-full bg-white/40 blur-3xl"></div>
+			{/* Optional dot pattern for texture */}
+			<div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none -z-10"></div>
 
-				<div className="absolute top-40 right-10 h-80 w-80 rounded-full bg-pink-100 blur-3xl opacity-70"></div>
-
-				<div className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-white blur-3xl opacity-60"></div>
-
-				<div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,#ffffff_1px,transparent_1px)] [background-size:40px_40px]"></div>
+			{/* Back Button (Absolute Top Left) */}
+			<div className="absolute top-8 left-8 z-20 hidden md:block">
+				<Link href="/" className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
+					<ArrowLeft className="w-4 h-4" />
+					Back to home
+				</Link>
 			</div>
 
-			{/* Card */}
-
-			<div className="relative z-10 w-full max-w-md rounded-[32px] border border-white/70 bg-white/75 backdrop-blur-xl shadow-[0_25px_80px_rgba(0,0,0,0.08)] p-10">
-				{/* Logo */}
-				<div className="flex justify-center">
-					<div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-fuchsia-600 to-purple-600 flex items-center justify-center shadow-lg">
-						<span className="text-white text-2xl font-bold">✦</span>
+			{/* Main Auth Card */}
+			<div className="w-full max-w-[420px] px-6 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+				<div className="bg-white/70 backdrop-blur-2xl border border-gray-200/80 rounded-[32px] shadow-[0_8px_40px_rgba(0,0,0,0.04)] p-8 sm:p-10 flex flex-col items-center text-center transition-all">
+					{/* Brand Icon */}
+					<div className="mb-6 bg-gradient-to-br from-indigo-600 to-purple-600 text-white p-3 rounded-2xl shadow-sm ring-1 ring-white/50">
+						<Sparkles className="w-6 h-6" />
 					</div>
-				</div>
-				{/* Heading */}
-				<div className="mt-8 text-center">
-					<h1 className="text-4xl font-bold tracking-tight text-gray-900">One click Sign-in!</h1>
 
-					<p className="mt-3 text-gray-500">Login/Register using google and get started in a second!</p>
+					{/* Copy */}
+					<h1 className="text-2xl font-bold tracking-tight text-gray-900 mb-2">Welcome to BotSignal</h1>
+					<p className="text-sm text-gray-500 mb-8 leading-relaxed px-2">Sign in to analyze your website's AI discoverability and LLM compatibility.</p>
+
+					{/* Google OAuth Button */}
+					<button onClick={handleGoogleLogin} disabled={isRedirecting} className="group relative flex w-full items-center justify-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3.5 text-sm font-semibold text-gray-700 shadow-sm transition-all hover:bg-gray-50 hover:shadow-md hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed">
+						{isRedirecting ? (
+							<Loader2 className="w-5 h-5 animate-spin text-gray-400" />
+						) : (
+							<>
+								<svg className="w-5 h-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+									<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+									<path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+									<path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+									<path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+								</svg>
+								Continue with Google
+							</>
+						)}
+					</button>
 				</div>
-				{/* Google */}
-				<button onClick={googleLogin} className="mt-8 flex h-14 w-full items-center justify-center gap-3 rounded-full border border-gray-200 bg-white font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 hover:shadow-md">
-					<img src="/google.svg" className="h-5 w-5" alt="Google" />
-					Continue with Google
-				</button>
+
+				{/* Secure / Footer Links */}
+				<div className="mt-8 text-center text-xs text-gray-500 space-y-2">
+					<p>
+						By continuing, you agree to BotSignal's <br className="sm:hidden" />
+						<Link href="/docs/terms" className="font-medium text-gray-600 hover:text-indigo-600 transition-colors">
+							Terms
+						</Link>{" "}
+						and{" "}
+						<Link href="/docs/privacy" className="font-medium text-gray-600 hover:text-indigo-600 transition-colors">
+							Privacy Policy
+						</Link>
+						.
+					</p>
+				</div>
 			</div>
 		</div>
 	);
-};
-
-export default Login;
+}
