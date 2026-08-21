@@ -46,7 +46,7 @@ function TokenVerificationContent() {
 				});
 		} else {
 			// No token in the URL at all
-			router.push("/auth");
+			router.push("/");
 		}
 	}, [token, router]); // Depend directly on the token, not the entire searchParams object
 
