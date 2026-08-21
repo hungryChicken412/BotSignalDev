@@ -70,10 +70,21 @@ export default function Tables() {
 			} else {
 				// throw new Error((data as any).statusText || "Invalid data format received.");
 				console.log("Log in First");
+
+				ShowCustomToast({
+					label: `Action Failed `,
+					info: "Log in First",
+					type: "error",
+				});
+				localStorage.removeItem("token");
+
+				router.push("/");
+
+
 			}
 		} catch (error) {
 			console.error("Failed to fetch reports", error);
-			const errorMessage = typeof error === "string" ? error : (error as Error).message || "Please login First!";
+			const errorMessage = typeof error === "string" ? error : (error as Error).message || "Unexpected Error Occured";
 
 			ShowCustomToast({
 				label: `Action Failed `,
