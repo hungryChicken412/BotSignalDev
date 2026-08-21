@@ -68,7 +68,8 @@ export default function Tables() {
 				setNextPage(data.next);
 				setPrevPage(data.previous);
 			} else {
-				throw new Error((data as any).statusText || "Invalid data format received.");
+				// throw new Error((data as any).statusText || "Invalid data format received.");
+				console.log("Log in First");
 			}
 		} catch (error) {
 			console.error("Failed to fetch reports", error);
