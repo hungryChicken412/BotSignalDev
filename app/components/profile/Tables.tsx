@@ -1,20 +1,15 @@
 "use client";
 
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import {Loader2, Download, Eye, Filter, Globe, Minus, MoreHorizontal, Trash2, Shield, ExternalLink} from "lucide-react";
 import {ShieldCheck, ShieldAlert, ShieldX} from "lucide-react"; // ... inside your render
 
 import {useRouter} from "next/navigation";
 
-
-
 import {userService} from "@/app/user.service";
 import ShowCustomToast from "@/app/components/CustomToast";
 import {baseUrl} from "@/app/user.service";
 import Link from "next/link";
-
-
-
 
 // Define our expected data shapes
 export interface Report {
@@ -34,72 +29,73 @@ export interface PaginatedResponse {
 	statusText?: string;
 }
 
+const REPORT_POLL_INTERVAL_MS = 4000;
+const isProcessingStatus = (status?: string) => ["processing", "pending", "queued", "in progress", "in_progress", "running"].includes(status?.toLowerCase() ?? "");
+
 export default function Tables() {
 	const [reports, setReports] = useState<Report[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	const router = useRouter();
 
-
-
-
 	// Pagination states
 	const [nextPage, setNextPage] = useState<string | null>(null);
 	const [prevPage, setPrevPage] = useState<string | null>(null);
 	const [totalCount, setTotalCount] = useState<number>(0);
+	const [currentPageUrl, setCurrentPageUrl] = useState<string | null>(null);
 
-	const fetchReports = async (url?: string | null) => {
-		try {
-			setIsLoading(true);
-			const data: Report[] | PaginatedResponse = await userService.getAuditReports(url);
+	const fetchReports = useCallback(
+		async (url: string | null = null, showLoading = true) => {
+			try {
+				if (showLoading) setIsLoading(true);
+				setCurrentPageUrl(url);
+				const data: Report[] | PaginatedResponse = await userService.getAuditReports(url);
 
-			if (!data) {
-				throw new Error("No data received from the server.");
-			}
+				if (!data) {
+					throw new Error("No data received from the server.");
+				}
 
-			if (Array.isArray(data)) {
-				setReports(data);
-				setTotalCount(data.length);
-				setNextPage(null);
-				setPrevPage(null);
-			} else if (data.results && Array.isArray(data.results)) {
-				setReports(data.results);
-				setTotalCount(data.count);
-				setNextPage(data.next);
-				setPrevPage(data.previous);
-			} else {
-				// throw new Error((data as any).statusText || "Invalid data format received.");
-				console.log("Log in First");
+				if (Array.isArray(data)) {
+					setReports(data);
+					setTotalCount(data.length);
+					setNextPage(null);
+					setPrevPage(null);
+				} else if (data.results && Array.isArray(data.results)) {
+					setReports(data.results);
+					setTotalCount(data.count);
+					setNextPage(data.next);
+					setPrevPage(data.previous);
+				} else {
+					// throw new Error((data as any).statusText || "Invalid data format received.");
+					console.log("Log in First");
+
+					ShowCustomToast({
+						label: `Action Failed `,
+						info: "Log in First",
+						type: "error",
+					});
+					localStorage.removeItem("token");
+
+					router.push("/");
+				}
+			} catch (error) {
+				console.error("Failed to fetch reports", error);
+				const errorMessage = typeof error === "string" ? error : (error as Error).message || "Unexpected Error Occured";
 
 				ShowCustomToast({
 					label: `Action Failed `,
-					info: "Log in First",
+					info: errorMessage,
 					type: "error",
 				});
 				localStorage.removeItem("token");
 
 				router.push("/");
-
-
+			} finally {
+				if (showLoading) setIsLoading(false);
 			}
-		} catch (error) {
-			console.error("Failed to fetch reports", error);
-			const errorMessage = typeof error === "string" ? error : (error as Error).message || "Unexpected Error Occured";
-
-			ShowCustomToast({
-				label: `Action Failed `,
-				info: errorMessage,
-				type: "error",
-			});
-			localStorage.removeItem("token");
-
-			router.push("/")
-
-
-		} finally {
-			setIsLoading(false);
-		}
-	};
+		},
+		[router],
+	);
 
 	// The new delete handler
 	const handleDelete = async (id: string | number) => {
@@ -127,13 +123,44 @@ export default function Tables() {
 				info: "Failed to delete the scan. Please try again.",
 				type: "error",
 			});
-
 		}
 	};
 
 	useEffect(() => {
-		fetchReports();
-	}, []);
+		const handleReportsRefresh = () => {
+			void fetchReports();
+		};
+
+		window.addEventListener("audit-reports-refresh", handleReportsRefresh);
+		const initialFetchId = window.setTimeout(() => void fetchReports(), 0);
+
+		return () => {
+			window.clearTimeout(initialFetchId);
+			window.removeEventListener("audit-reports-refresh", handleReportsRefresh);
+		};
+	}, [fetchReports]);
+
+	const hasProcessingReports = reports.some((report) => isProcessingStatus(report.status));
+
+	useEffect(() => {
+		if (!hasProcessingReports) return;
+
+		let isCancelled = false;
+		let timeoutId: number;
+
+		const pollReports = async () => {
+			await fetchReports(currentPageUrl, false);
+			if (!isCancelled) {
+				timeoutId = window.setTimeout(pollReports, REPORT_POLL_INTERVAL_MS);
+			}
+		};
+
+		timeoutId = window.setTimeout(pollReports, REPORT_POLL_INTERVAL_MS);
+		return () => {
+			isCancelled = true;
+			window.clearTimeout(timeoutId);
+		};
+	}, [currentPageUrl, fetchReports, hasProcessingReports]);
 
 	const getDomain = (url: string) => {
 		if (!url) return "Unknown Website";
@@ -185,7 +212,7 @@ export default function Tables() {
 							</tr>
 						) : (
 							reports.map((report: Report) => {
-								const isProcessing = report.status?.toLowerCase() === "processing" || report.status?.toLowerCase() === "pending";
+								const isProcessing = isProcessingStatus(report.status);
 
 								return (
 									<tr key={report.id} className="hover:bg-gray-50/50 transition-colors group">
@@ -193,8 +220,11 @@ export default function Tables() {
 											<div className="flex items-center gap-4">
 												<div className="w-10 h-10 rounded-lg border border-gray-200 bg-gray-50 flex items-center justify-center shrink-0">{isProcessing ? <Loader2 className="w-5 h-5 text-gray-400 animate-spin" /> : <Globe className="w-5 h-5 text-gray-400" />}</div>
 												<div>
-
-													<Link href={`/dashboard?id=${report.id}`}><p className="font-bold text-blue-900 cursor-pointer text-base">{getDomain(report.url)} <ExternalLink/> </p></Link>
+													<Link href={`/dashboard?id=${report.id}`}>
+														<p className="font-bold text-blue-900 cursor-pointer text-base">
+															{getDomain(report.url)} <ExternalLink />{" "}
+														</p>
+													</Link>
 													<p className="text-xs text-gray-400 mt-0.5">{report.url}</p>
 												</div>
 											</div>
@@ -224,7 +254,6 @@ export default function Tables() {
 												</div>
 											) : (
 												<div className="flex items-center justify-end gap-4 text-gray-400  transition-opacity">
-													
 													{/* <a href={`${baseUrl}/audits/reports/${report.id}/download-pdf`}>
 														<Download className="w-4 h-4 cursor-pointer hover:text-gray-900 transition-colors" />{" "}
 													</a> */}

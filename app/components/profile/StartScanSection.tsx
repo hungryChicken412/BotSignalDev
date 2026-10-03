@@ -92,6 +92,7 @@ export default function StartScanSection() {
 			// Sending the array of valid URLs via the existing requestAudit service
 			// Passing an empty string for the email since the user is already authenticated in the dashboard
 			await userService.requestAudit(validUrls, "");
+			window.dispatchEvent(new Event("audit-reports-refresh"));
 
 			ShowCustomToast({
 				label: "Scan Started!",
